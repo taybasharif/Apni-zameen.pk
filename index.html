@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HAVENZA PROPERTIES — Pakistan's premier luxury real estate advisory. Curated modern villas, penthouses, and prime commercial investments in Lahore, Islamabad, and Karachi.">
+  <meta name="keywords" content="luxury real estate Pakistan, DHA Lahore villas, Islamabad penthouses, Clifton Karachi properties, Havenza Properties, high-end real estate">
+  <meta name="author" content="Tayba Sharif — Havenza Properties">
+  
+  <title>HAVENZA PROPERTIES — Curated Luxury Real Estate & Private Residences</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Modern Clean UI) & Cormorant Garamond (High-End Luxury Editorial) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons for Luxury Architecture & Navigation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Core Design System Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Top Global Announcement Bar (Currency Switch & Direct Line)
+       ========================================================================= -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="live-badge"><span class="pulse-dot"></span> Private Showcase</span>
+        <span>Now booking exclusive Q3/Q4 private viewings across Lahore, Islamabad & Karachi</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="mailto:taybasharif96@gmail.com" class="top-bar-contact">
+          <i class="fa-regular fa-envelope" style="color: var(--color-gold);"></i>
+          <span>taybasharif96@gmail.com</span>
+        </a>
+        <div class="currency-toggle" title="Switch Display Currency">
+          <button class="currency-btn active" data-currency="PKR" onclick="HavenzaApp.setCurrency('PKR')">PKR</button>
+          <button class="currency-btn" data-currency="USD" onclick="HavenzaApp.setCurrency('USD')">USD ($)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Header & Primary Navigation
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" aria-label="HAVENZA PROPERTIES Homepage">
+        <div class="brand-crest">H</div>
+        <div class="brand-text">
+          <div class="brand-name">HAVENZA <span>PROPERTIES</span></div>
+          <div class="brand-tag">Private Luxury Residences</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="primary-nav" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#properties" class="nav-link">Properties</a>
+        <a href="#trilogy" class="nav-link">Buy</a>
+        <a href="#trilogy" class="nav-link">Rent</a>
+        <a href="#sell" class="nav-link">Sell</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#agents" class="nav-link">Agents</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Action CTAs -->
+      <div class="header-actions">
+        <!-- Saved / Favorites Button -->
+        <button class="fav-btn-header" 
+                onclick="HavenzaApp.setPillFilter('favorites', 'true', document.getElementById('favPill'))" 
+                title="View Saved Properties" 
+                aria-label="View Saved Properties">
+          <i class="fa-regular fa-heart"></i>
+          <span class="fav-counter" id="favCounter">0</span>
+        </button>
+
+        <!-- Primary CTA: Schedule a Viewing -->
+        <a href="#viewing" class="btn btn-primary btn-sm">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>Schedule a Viewing</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Backdrop -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div class="mobile-nav-links">
+      <a href="#home" class="mobile-nav-link">Home <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#properties" class="mobile-nav-link">Properties <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#trilogy" class="mobile-nav-link">Buy & Rent <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#sell" class="mobile-nav-link">Sell Your Property <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#services" class="mobile-nav-link">Our Services <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#agents" class="mobile-nav-link">Our Agents <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#calculator" class="mobile-nav-link">Investment Calculator <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#about" class="mobile-nav-link">About Us <i class="fa-solid fa-angle-right"></i></a>
+      <a href="#contact" class="mobile-nav-link">Contact <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="#viewing" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-regular fa-calendar-check"></i> Schedule a Viewing
+      </a>
+      <div style="font-size: 0.85rem; color: #8fa29c; text-align: center;">
+        Direct Contact: <a href="mailto:taybasharif96@gmail.com" style="color: var(--color-gold);">taybasharif96@gmail.com</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       Main Content
+       ========================================================================= -->
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-background"></div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-kicker">Pakistan's Premier Real Estate Advisory</div>
+          <h1 class="hero-title">Exquisite Living, <em>Masterfully Curated.</em></h1>
+          <p class="hero-description">
+            Experience bespoke property advisory representing Pakistan’s most distinguished villas, panoramic sky penthouses, and premier commercial assets across Lahore, Islamabad, and Karachi.
+          </p>
+          <div class="hero-ctas">
+            <a href="#properties" class="btn btn-primary btn-lg">
+              <span>Explore Properties</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#viewing" class="btn btn-outline btn-lg">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Schedule a Viewing</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating Property Search Console -->
+    <div class="search-console-wrapper">
+      <div class="search-console">
+        <!-- Purpose Tabs (Buy / Rent) -->
+        <div class="search-tabs">
+          <button class="search-tab active" data-purpose="all">All Portfolio</button>
+          <button class="search-tab" data-purpose="buy">Buy Property</button>
+          <button class="search-tab" data-purpose="rent">Rent Residence</button>
+        </div>
+
+        <!-- Filter Inputs -->
+        <div class="search-fields">
+          <div class="field-group">
+            <label class="field-label" for="heroLocation">City or Prime Area</label>
+            <input type="text" id="heroLocation" class="field-input" placeholder="e.g. DHA Lahore, F-7 Islamabad, Clifton...">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="heroType">Property Type</label>
+            <select id="heroType" class="field-select">
+              <option value="all">All Categories</option>
+              <option value="Villa">Luxury Villa</option>
+              <option value="Penthouse">Sky Penthouse</option>
+              <option value="Apartment">Modern Apartment</option>
+              <option value="House">Executive House</option>
+              <option value="Commercial">Commercial Tower</option>
+              <option value="Plot">Residential Plot</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="heroBudget">Budget Segment</label>
+            <select id="heroBudget" class="field-select">
+              <option value="all">Any Price Range</option>
+              <option value="under-1cr">Under PKR 1 Crore</option>
+              <option value="1cr-10cr">PKR 1 to 10 Crore</option>
+              <option value="10cr-plus">PKR 10+ Crore (Ultra Luxury)</option>
+              <option value="under-3lakh">Rent: Under PKR 3 Lakh/mo</option>
+              <option value="3lakh-plus">Rent: PKR 3 Lakh+/mo</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="heroBedsQuick">Bedrooms</label>
+            <select id="heroBedsQuick" class="field-select">
+              <option value="all">Any Bedrooms</option>
+              <option value="2">2 Bedrooms</option>
+              <option value="3">3 Bedrooms</option>
+              <option value="4">4 Bedrooms</option>
+              <option value="5">5+ Bedrooms</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary" style="height: 48px;" onclick="HavenzaApp.submitHeroSearch()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Statistics & Trust Bar -->
+    <section class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">PKR 25B+</div>
+            <div class="stat-label">Properties Transacted</div>
+            <div class="stat-sub">Across prime Pakistani metropolitans</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99.2%</div>
+            <div class="stat-label">Client Satisfaction</div>
+            <div class="stat-sub">High net-worth & diaspora clientele</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">45+</div>
+            <div class="stat-label">Expert Advisors & Analysts</div>
+            <div class="stat-sub">Full legal and structural vetting</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Years of Heritage</div>
+            <div class="stat-sub">Led by Tayba Sharif & associates</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Featured Properties & Filter Explorer
+         ======================================================================= -->
+    <section class="section section-cream" id="properties">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">The Curated Collection</div>
+          <h2 class="section-title">Featured Luxury Properties</h2>
+          <p class="section-lead">
+            Explore meticulously vetted estates, architectural villas, and skyline penthouses crafted for discerning investors and high-profile homeowners.
+          </p>
+        </div>
+
+        <!-- Filter Controls Container -->
+        <div class="properties-controls">
+          <!-- Filter Pills Row -->
+          <div class="filter-pills-row">
+            <div class="filter-pills">
+              <button class="filter-pill active" data-val="all" onclick="HavenzaApp.setPillFilter('category', 'all', this)">All Properties</button>
+              <button class="filter-pill" data-val="buy" onclick="HavenzaApp.setPillFilter('purpose', 'buy', this)">For Sale</button>
+              <button class="filter-pill" data-val="rent" onclick="HavenzaApp.setPillFilter('purpose', 'rent', this)">For Rent</button>
+              <button class="filter-pill" data-val="Villa" onclick="HavenzaApp.setPillFilter('category', 'Villa', this)">Villas</button>
+              <button class="filter-pill" data-val="Penthouse" onclick="HavenzaApp.setPillFilter('category', 'Penthouse', this)">Penthouses</button>
+              <button class="filter-pill" data-val="Apartment" onclick="HavenzaApp.setPillFilter('category', 'Apartment', this)">Apartments</button>
+              <button class="filter-pill" data-val="Commercial" onclick="HavenzaApp.setPillFilter('category', 'Commercial', this)">Commercial</button>
+              <button class="filter-pill" id="favPill" data-val="favs" onclick="HavenzaApp.setPillFilter('favorites', 'true', this)">
+                <i class="fa-solid fa-heart" style="color: #e53935;"></i> Saved Only
+              </button>
+            </div>
+            
+            <button class="reset-filter-btn" onclick="HavenzaApp.resetFilters()">
+              <i class="fa-solid fa-rotate-left"></i> Reset Filters
+            </button>
+          </div>
+
+          <!-- Secondary Filters: Search Keyword, City, Bedrooms, Sorting -->
+          <div class="filter-dropdowns-row">
+            <input type="text" id="filterKeyword" class="field-input" placeholder="Search by title, street, or keyword...">
+            
+            <select id="filterCity" class="field-select">
+              <option value="all">All Cities</option>
+              <option value="Lahore">Lahore</option>
+              <option value="Islamabad">Islamabad</option>
+              <option value="Karachi">Karachi</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+              <option value="Faisalabad">Faisalabad</option>
+            </select>
+
+            <select id="filterBeds" class="field-select">
+              <option value="all">Any Beds</option>
+              <option value="2">2 Bedrooms</option>
+              <option value="3">3 Bedrooms</option>
+              <option value="4">4 Bedrooms</option>
+              <option value="5">5+ Bedrooms</option>
+            </select>
+
+            <select id="filterSort" class="field-select">
+              <option value="default">Sort by: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="beds-desc">Most Bedrooms</option>
+              <option value="newest">Recently Built</option>
+            </select>
+
+            <button class="btn btn-outline-dark btn-sm" style="height: 44px;" onclick="HavenzaApp.resetFilters()">
+              <i class="fa-solid fa-filter-circle-xmark"></i> Clear
+            </button>
+          </div>
+
+          <div class="results-info-bar">
+            <span id="propertiesCount">Showing 12 premier properties</span>
+            <span style="font-size: 0.8rem; color: var(--color-text-muted);">Real-time live verified listings</span>
+          </div>
+        </div>
+
+        <!-- Property Grid Container -->
+        <div class="properties-grid" id="propertiesGrid">
+          <!-- Dynamically Injected by js/app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Buy / Rent / Sell Dedicated Trilogy Section
+         ======================================================================= -->
+    <section class="section section-white" id="trilogy">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">Comprehensive Capabilities</div>
+          <h2 class="section-title">Buy, Rent, or Sell with Havenza</h2>
+          <p class="section-lead">
+            Whether you are acquiring a generational family estate, leasing a turnkey executive penthouse, or liquidating a high-value portfolio, our dedicated teams deliver unparalleled discretion and execution.
+          </p>
+        </div>
+
+        <div class="trilogy-grid">
+          <!-- Buy a Property Card -->
+          <article class="trilogy-card">
+            <div class="trilogy-number">01</div>
+            <div class="trilogy-icon-wrapper">
+              <i class="fa-solid fa-house-chimney"></i>
+            </div>
+            <h3 class="trilogy-title">Buy a Property</h3>
+            <p class="trilogy-text">
+              Access the finest private estates and off-market opportunities. We conduct title deed forensics, zoning compliance, and private seller negotiations on your behalf.
+            </p>
+            <div class="trilogy-points">
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>Guaranteed DHA/CDA/KDA cleared titles</span></div>
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>Private off-market viewing protocol</span></div>
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>Complete closing & legal escrow support</span></div>
+            </div>
+            <button class="btn btn-primary" onclick="HavenzaApp.setPillFilter('purpose', 'buy', null); document.getElementById('properties').scrollIntoView({behavior:'smooth'});">
+              <span>Browse For Sale</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </article>
+
+          <!-- Rent a Property Card -->
+          <article class="trilogy-card">
+            <div class="trilogy-number">02</div>
+            <div class="trilogy-icon-wrapper">
+              <i class="fa-solid fa-key"></i>
+            </div>
+            <h3 class="trilogy-title">Rent a Property</h3>
+            <p class="trilogy-text">
+              Turnkey executive flats and serviced luxury residences favored by embassy officials, multinational directors, and relocating families seeking immaculate standards.
+            </p>
+            <div class="trilogy-points">
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>Fully furnished turnkey options</span></div>
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>24/7 security & standby power guarantees</span></div>
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>Standardized corporate lease agreements</span></div>
+            </div>
+            <button class="btn btn-dark" onclick="HavenzaApp.setPillFilter('purpose', 'rent', null); document.getElementById('properties').scrollIntoView({behavior:'smooth'});">
+              <span>Explore Rentals</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </article>
+
+          <!-- Sell Your Property Card -->
+          <article class="trilogy-card">
+            <div class="trilogy-number">03</div>
+            <div class="trilogy-icon-wrapper">
+              <i class="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+            <h3 class="trilogy-title">Sell Your Property</h3>
+            <p class="trilogy-text">
+              Showcase your home through cinematic architectural photography, qualified high-net-worth investor syndicates, and targeted global diaspora marketing campaigns.
+            </p>
+            <div class="trilogy-points">
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>Complimentary certified valuation dossier</span></div>
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>Discreet marketing or full open campaigns</span></div>
+              <div class="trilogy-point"><i class="fa-solid fa-circle-check"></i> <span>High average sales price & rapid closing</span></div>
+            </div>
+            <a href="#sell" class="btn btn-outline-dark">
+              <span>Request Valuation</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Our Services Section
+         ======================================================================= -->
+    <section class="section section-dark" id="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">Bespoke Real Estate Services</div>
+          <h2 class="section-title">Institutional Rigor, Private Advisory</h2>
+          <p class="section-lead">
+            Tailored solutions covering acquisitions, asset management, and investment advisory for domestic and overseas clientele.
+          </p>
+        </div>
+
+        <div class="services-grid" id="servicesGrid">
+          <!-- Dynamically Injected by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Why Choose Us & Brand Heritage Section
+         ======================================================================= -->
+    <section class="section section-cream" id="about">
+      <div class="container">
+        <div class="split-layout">
+          <!-- Story & Heritage -->
+          <div>
+            <div class="kicker">Why Havenza Properties</div>
+            <h2 class="section-title">Redefining Luxury Real Estate in Pakistan</h2>
+            <p class="section-lead" style="margin-bottom: 20px;">
+              Founded by <strong>Tayba Sharif</strong>, HAVENZA PROPERTIES was established to eliminate the friction, opacity, and uncertainty traditionally associated with Pakistani property transactions.
+            </p>
+            <p style="color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 24px;">
+              We operate not as transactional brokers, but as trusted fiduciaries and architectural curators. Every residence featured in our portfolio has completed structural reviews, legal title checks, and comparative valuation analyses before being presented to our clients.
+            </p>
+            <div style="display: flex; gap: 24px; margin-top: 30px; align-items: center;">
+              <div>
+                <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: var(--color-primary);">100%</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-text-muted);">Title Clearances</div>
+              </div>
+              <div style="width: 1px; height: 50px; background-color: var(--color-border);"></div>
+              <div>
+                <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: var(--color-gold-dark);">40%+</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-text-muted);">Overseas Diaspora Buyers</div>
+              </div>
+              <div style="width: 1px; height: 50px; background-color: var(--color-border);"></div>
+              <div>
+                <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: var(--color-primary);">24h</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-text-muted);">Inquiry Response SLA</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Grid Mini Cards -->
+          <div class="features-grid-mini">
+            <div class="feature-mini-card">
+              <i class="fa-solid fa-certificate"></i>
+              <h4>Verified Title Deeds</h4>
+              <p>Thorough 3-tier legal verification directly with official development authorities (DHA, CDA, KDA).</p>
+            </div>
+            <div class="feature-mini-card">
+              <i class="fa-solid fa-user-shield"></i>
+              <h4>Dedicated Advisors</h4>
+              <p>Personalized representation with a senior property advisor assigned to your journey.</p>
+            </div>
+            <div class="feature-mini-card">
+              <i class="fa-solid fa-scale-balanced"></i>
+              <h4>Transparent Process</h4>
+              <p>Zero hidden costs, verified token deposits, and fully documented commission structures.</p>
+            </div>
+            <div class="feature-mini-card">
+              <i class="fa-solid fa-globe"></i>
+              <h4>Diaspora Concierge</h4>
+              <p>Turnkey remote purchase support for Pakistani expatriates across the UK, USA, UAE, and Canada.</p>
+            </div>
+            <div class="feature-mini-card">
+              <i class="fa-solid fa-chart-pie"></i>
+              <h4>Market Intelligence</h4>
+              <p>Data-driven yield calculations, rental returns, and capital appreciation projections.</p>
+            </div>
+            <div class="feature-mini-card">
+              <i class="fa-solid fa-handshake-angle"></i>
+              <h4>End-to-End Closing</h4>
+              <p>Transfer slip processing, tax compliance (FBR), and key handover managed seamlessly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Sell Your Property Valuation Form Section
+         ======================================================================= -->
+    <section class="section section-white" id="sell">
+      <div class="container">
+        <div class="split-layout">
+          <div>
+            <div class="kicker">List with Havenza</div>
+            <h2 class="section-title">Sell Your Luxury Property with Confidence</h2>
+            <p class="section-lead" style="margin-bottom: 22px;">
+              Position your residence in front of pre-qualified domestic and international buyers. We deliver bespoke media production, private showings, and aggressive negotiation to maximize realized price.
+            </p>
+            <div style="background: var(--color-cream); border-radius: var(--radius-md); padding: 24px; border-left: 4px solid var(--color-gold);">
+              <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">Direct Principal Consultation</h4>
+              <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 12px;">
+                Have an ultra-prime estate or commercial building? Contact Principal Advisor <strong>Tayba Sharif</strong> directly for discrete advisory.
+              </p>
+              <a href="mailto:taybasharif96@gmail.com?subject=Direct%20Property%20Listing%20Consultation" class="btn btn-dark btn-sm">
+                <i class="fa-solid fa-envelope"></i> Email Tayba Sharif
+              </a>
+            </div>
+          </div>
+
+          <!-- Valuation Submission Form -->
+          <div class="form-card">
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 8px;">Request Certified Valuation</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 24px;">
+              Submit your property overview for a confidential market valuation dossier within 24 hours.
+            </p>
+
+            <form id="sellForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="sellName">Full Name *</label>
+                  <input type="text" id="sellName" class="form-input" placeholder="e.g. Tayba Sharif" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="sellPhone">Phone Number *</label>
+                  <input type="tel" id="sellPhone" class="form-input" placeholder="+92 300 1234567" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="sellEmail">Email Address *</label>
+                  <input type="email" id="sellEmail" class="form-input" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="sellLocation">City & Area *</label>
+                  <input type="text" id="sellLocation" class="form-input" placeholder="e.g. DHA Phase 6, Lahore" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="sellType">Property Type *</label>
+                  <select id="sellType" class="form-select" required>
+                    <option value="">Select Property Type...</option>
+                    <option value="Villa">Luxury Villa</option>
+                    <option value="Penthouse">Sky Penthouse</option>
+                    <option value="House">Executive House</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Commercial">Commercial Plaza / Floor</option>
+                    <option value="Plot">Residential Plot</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="sellSize">Size / Area *</label>
+                  <input type="text" id="sellSize" class="form-input" placeholder="e.g. 1 Kanal / 500 Sq Yds" required>
+                </div>
+
+                <div class="form-group col-span-2">
+                  <label class="form-label" for="sellNotes">Additional Notes / Asking Price</label>
+                  <textarea id="sellNotes" class="form-textarea" placeholder="Provide any details about renovations, features, or timeline..."></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Submit Property for Valuation</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Interactive Mortgage & Investment Calculator
+         ======================================================================= -->
+    <section class="section section-cream" id="calculator">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">Financial Planning Tools</div>
+          <h2 class="section-title">Mortgage & Investment Calculator</h2>
+          <p class="section-lead">
+            Estimate your monthly financing installments, down payment, and total borrowing costs with real-time interactive sliders.
+          </p>
+        </div>
+
+        <div class="calculator-card">
+          <div class="calc-grid">
+            <!-- Range Sliders -->
+            <div class="calc-inputs">
+              <!-- Property Price Slider -->
+              <div class="calc-range-group">
+                <div class="calc-label-row">
+                  <span>Property Price</span>
+                  <span class="calc-val-badge" id="calcPriceVal">PKR 2.85 Crore</span>
+                </div>
+                <input type="range" id="calcPrice" class="calc-slider" min="5000000" max="350000000" step="1000000" value="28500000">
+              </div>
+
+              <!-- Down Payment Slider -->
+              <div class="calc-range-group">
+                <div class="calc-label-row">
+                  <span>Down Payment (%)</span>
+                  <span class="calc-val-badge" id="calcDownVal">25% (PKR 71.25 Lakh)</span>
+                </div>
+                <input type="range" id="calcDown" class="calc-slider" min="10" max="70" step="5" value="25">
+              </div>
+
+              <!-- Loan Tenure Slider -->
+              <div class="calc-range-group">
+                <div class="calc-label-row">
+                  <span>Financing Tenure</span>
+                  <span class="calc-val-badge" id="calcTenureVal">20 Years</span>
+                </div>
+                <input type="range" id="calcTenure" class="calc-slider" min="5" max="25" step="1" value="20">
+              </div>
+
+              <!-- Interest Rate Slider -->
+              <div class="calc-range-group">
+                <div class="calc-label-row">
+                  <span>Estimated Bank Rate (p.a.)</span>
+                  <span class="calc-val-badge" id="calcRateVal">13.5% p.a.</span>
+                </div>
+                <input type="range" id="calcRate" class="calc-slider" min="8" max="22" step="0.5" value="13.5">
+              </div>
+            </div>
+
+            <!-- Calculated Results Card -->
+            <div class="calc-results-card">
+              <div class="calc-main-result">
+                <span>Estimated Monthly Installment</span>
+                <h3 id="calcMonthlyResult">PKR 258,400</h3>
+                <small style="color: #cad8d3;">Subject to bank credit approval and Islamic financing terms</small>
+              </div>
+
+              <div class="calc-breakdown-list">
+                <div class="calc-breakdown-item">
+                  <span>Financed Amount (Principal):</span>
+                  <strong id="calcLoanAmount">PKR 2.14 Crore</strong>
+                </div>
+                <div class="calc-breakdown-item">
+                  <span>Initial Down Payment:</span>
+                  <strong id="calcDownAmount">PKR 71.25 Lakh</strong>
+                </div>
+                <div class="calc-breakdown-item">
+                  <span>Estimated Total Financing Cost:</span>
+                  <strong id="calcTotalInterest">PKR 4.06 Crore</strong>
+                </div>
+              </div>
+
+              <a href="#viewing" class="btn btn-primary btn-sm" style="margin-top: 10px;">
+                <i class="fa-solid fa-calculator"></i> Discuss Mortgage Advisory
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Our Elite Agents & Advisors Section
+         ======================================================================= -->
+    <section class="section section-white" id="agents">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">Elite Advisory Team</div>
+          <h2 class="section-title">Meet Our Senior Real Estate Partners</h2>
+          <p class="section-lead">
+            Industry veterans armed with deep neighborhood intelligence, off-market seller relationships, and flawless transactional records.
+          </p>
+        </div>
+
+        <div class="agents-grid" id="agentsGrid">
+          <!-- Dynamically Injected by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Client Testimonials Section (Interactive Carousel)
+         ======================================================================= -->
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">Client Stories & Endorsements</div>
+          <h2 class="section-title">Trusted by High-Net-Worth Individuals</h2>
+          <p class="section-lead">
+            Discover why business leaders, diplomatic dignitaries, and overseas families place their property trust in Havenza.
+          </p>
+        </div>
+
+        <div class="testimonials-wrapper" id="testimonialWrapper">
+          <!-- Dynamically Injected by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Schedule a Viewing Section & Interactive Form
+         ======================================================================= -->
+    <section class="section section-white" id="viewing">
+      <div class="container">
+        <div class="split-layout">
+          <div>
+            <div class="kicker">Private Inspections</div>
+            <h2 class="section-title">Schedule a Private Viewing</h2>
+            <p class="section-lead" style="margin-bottom: 24px;">
+              Arrange an exclusive chauffeur-accompanied property walkthrough or a live high-definition virtual tour with our dedicated senior advisors.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; align-items: flex-start; gap: 14px;">
+                <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary-subtle); display: flex; align-items: center; justify-content: center; color: var(--color-primary); flex-shrink: 0;">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 800;">Confidential & Discrete</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Your personal contact and appointment schedule remain strictly private.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 14px;">
+                <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary-subtle); display: flex; align-items: center; justify-content: center; color: var(--color-primary); flex-shrink: 0;">
+                  <i class="fa-solid fa-laptop"></i>
+                </div>
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 800;">Virtual Tours for Overseas Clients</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Live interactive 4K video walk-throughs across Zoom, Google Meet, or WhatsApp.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 14px;">
+                <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary-subtle); display: flex; align-items: center; justify-content: center; color: var(--color-primary); flex-shrink: 0;">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 800;">Guaranteed 2-Hour Response</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Our lead advisor contacts you within two hours to confirm logistics.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appointment Booking Form -->
+          <div class="form-card">
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 8px;">Book an Appointment</h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-secondary); margin-bottom: 24px;">
+              Select a preferred residence and your convenient day and time window.
+            </p>
+
+            <form id="viewingForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="viewingFullName">Full Name *</label>
+                  <input type="text" id="viewingFullName" class="form-input" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="viewingPhone">Phone / WhatsApp *</label>
+                  <input type="tel" id="viewingPhone" class="form-input" placeholder="+92 300 0000000" required>
+                </div>
+
+                <div class="form-group col-span-2">
+                  <label class="form-label" for="viewingEmail">Email Address *</label>
+                  <input type="email" id="viewingEmail" class="form-input" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group col-span-2">
+                  <label class="form-label" for="viewingPropertySelect">Select Property of Interest *</label>
+                  <select id="viewingPropertySelect" class="form-select" required>
+                    <!-- Populated dynamically by js/app.js -->
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="viewingDate">Preferred Date *</label>
+                  <input type="date" id="viewingDate" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="viewingTime">Preferred Time Slot *</label>
+                  <select id="viewingTime" class="form-select" required>
+                    <option value="">Choose Time Window...</option>
+                    <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM – 1:00 PM)</option>
+                    <option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM – 4:00 PM)</option>
+                    <option value="Evening (4:00 PM - 7:00 PM)">Evening (4:00 PM – 7:00 PM)</option>
+                    <option value="Virtual Tour (Anytime)">Virtual Tour (Scheduled Online)</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-span-2">
+                  <label class="form-label" for="viewingMessage">Special Requests / Requirements</label>
+                  <textarea id="viewingMessage" class="form-textarea" placeholder="Let us know if you require airport chauffeur pickup, architectural blueprints, or specific inquiries..."></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>Confirm Viewing Appointment</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Frequently Asked Questions (FAQ) Accordion
+         ======================================================================= -->
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">Clear Answers</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-lead">
+            Essential information covering legal title verification, overseas remittance, transaction fees, and viewing protocols.
+          </p>
+        </div>
+
+        <div class="faq-accordion" id="faqContainer">
+          <!-- Dynamically Injected by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Contact & Map Location Visual Section
+         ======================================================================= -->
+    <section class="section section-white" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker kicker-centered">Get in Touch</div>
+          <h2 class="section-title">Begin Your Property Journey</h2>
+          <p class="section-lead">
+            Connect directly with Tayba Sharif and our senior real estate advisory team.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Details Column -->
+          <div class="contact-info-panel">
+            <div class="contact-card-item">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-card-text">
+                <h4>Flagship Office (Lahore)</h4>
+                <p>Havenza Tower, Main Boulevard, Gulberg III, Lahore, Pakistan</p>
+                <p style="margin-top: 4px; font-size: 0.85rem; color: var(--color-gold-dark);">Capital Office: Sector F-7/2, Islamabad</p>
+              </div>
+            </div>
+
+            <div class="contact-card-item">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-card-text">
+                <h4>Direct Email Inquiry</h4>
+                <p><a href="mailto:taybasharif96@gmail.com" style="font-weight: 700; color: var(--color-primary);">taybasharif96@gmail.com</a></p>
+                <p style="font-size: 0.8rem; color: var(--color-text-muted);">Owner & Principal: Tayba Sharif</p>
+              </div>
+            </div>
+
+            <div class="contact-card-item">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="contact-card-text">
+                <h4>Telephone & WhatsApp</h4>
+                <p><a href="tel:+923008472910" style="font-weight: 700; color: var(--color-primary);">+92 300 8472910</a></p>
+                <p style="font-size: 0.8rem; color: var(--color-text-muted);">Available 9:00 AM – 8:00 PM PKT (Mon–Sat)</p>
+              </div>
+            </div>
+
+            <!-- Stylized Map Graphic Card -->
+            <div class="map-visual-card">
+              <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80" 
+                   alt="Havenza Properties Location Map" 
+                   class="map-bg">
+              <div class="map-card-badge">
+                <div>
+                  <div style="font-weight: 800; font-size: 0.95rem;">Gulberg III Flagship Suite</div>
+                  <div style="font-size: 0.8rem; color: #b7c7c1;">Open for private appointments</div>
+                </div>
+                <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-diamond-turn-right"></i> Directions
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Inquiry Form -->
+          <div class="form-card">
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 8px;">Send a Direct Message</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 24px;">
+              Have an inquiry regarding a listing, valuation, or partnership? Send us a message and our advisory team will respond promptly.
+            </p>
+
+            <form id="contactForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Your Name *</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Tayba Sharif" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Your Email *</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group col-span-2">
+                  <label class="form-label" for="contactSubject">Subject *</label>
+                  <input type="text" id="contactSubject" class="form-input" placeholder="e.g. Inquiry regarding The Grand Royale Villa" required>
+                </div>
+
+                <div class="form-group col-span-2">
+                  <label class="form-label" for="contactMsg">Message / Inquiry *</label>
+                  <textarea id="contactMsg" class="form-textarea" placeholder="How may we assist your real estate journey?" required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Send Message to Havenza</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       Premium Luxury Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Summary Column -->
+        <div class="footer-brand">
+          <a href="#home" class="brand-logo">
+            <div class="brand-crest">H</div>
+            <div class="brand-text">
+              <div class="brand-name">HAVENZA <span>PROPERTIES</span></div>
+              <div class="brand-tag">Private Luxury Residences</div>
+            </div>
+          </a>
+          <p>
+            An elite real estate advisory firm delivering architectural curation, rigorous legal vetting, and discrete closing services across Pakistan's most prized zip codes.
+          </p>
+          <div style="margin-top: 16px; font-size: 0.88rem; color: #8fa29c;">
+            Principal & Founder: <strong style="color: #ffffff;">Tayba Sharif</strong><br>
+            Direct Email: <a href="mailto:taybasharif96@gmail.com" style="color: var(--color-gold);">taybasharif96@gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="#home" class="footer-link">Home Showcase</a>
+            <a href="#properties" class="footer-link">Property Portfolio</a>
+            <a href="#trilogy" class="footer-link">Buy a Residence</a>
+            <a href="#trilogy" class="footer-link">Luxury Rentals</a>
+            <a href="#sell" class="footer-link">Sell Your Property</a>
+            <a href="#about" class="footer-link">About Havenza</a>
+            <a href="#contact" class="footer-link">Contact & Office</a>
+          </div>
+        </div>
+
+        <!-- Portfolio Segments -->
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <div class="footer-links">
+            <a href="javascript:void(0)" onclick="HavenzaApp.setPillFilter('category', 'Villa'); document.getElementById('properties').scrollIntoView({behavior:'smooth'});" class="footer-link">Signature Villas</a>
+            <a href="javascript:void(0)" onclick="HavenzaApp.setPillFilter('category', 'Penthouse'); document.getElementById('properties').scrollIntoView({behavior:'smooth'});" class="footer-link">Sky Penthouses</a>
+            <a href="javascript:void(0)" onclick="HavenzaApp.setPillFilter('category', 'Apartment'); document.getElementById('properties').scrollIntoView({behavior:'smooth'});" class="footer-link">Executive Apartments</a>
+            <a href="javascript:void(0)" onclick="HavenzaApp.setPillFilter('category', 'Commercial'); document.getElementById('properties').scrollIntoView({behavior:'smooth'});" class="footer-link">Commercial Towers</a>
+            <a href="javascript:void(0)" onclick="HavenzaApp.setPillFilter('category', 'Plot'); document.getElementById('properties').scrollIntoView({behavior:'smooth'});" class="footer-link">Possession Plots</a>
+            <a href="#calculator" class="footer-link">Investment Calculator</a>
+          </div>
+        </div>
+
+        <!-- Newsletter & Social Column -->
+        <div class="footer-col">
+          <h4>Private Briefings</h4>
+          <p style="font-size: 0.88rem; color: #8fa29c; margin-bottom: 14px;">
+            Subscribe to our quarterly off-market property brief and Pakistani luxury market analytics.
+          </p>
+          <form class="newsletter-form" id="newsletterForm">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Enter your email address" required aria-label="Email Address for newsletter">
+              <button type="submit" aria-label="Subscribe to newsletter"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </form>
+
+          <div class="social-row">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Legal Notice -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 HAVENZA PROPERTIES. All rights reserved. Registered with DHA, CDA & Real Estate Regulatory Authority.
+        </div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#home" style="color: #8fa29c;">Privacy Policy</a>
+          <a href="#home" style="color: #8fa29c;">Terms of Advisory</a>
+          <a href="#home" style="color: #8fa29c;">Legal Disclaimers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       Interactive Property Details Modal
+       ========================================================================= -->
+  <div class="modal-overlay" id="propertyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="HavenzaApp.closeDetails()" aria-label="Close details modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Multi-Image Gallery Area -->
+      <div class="modal-gallery-area">
+        <img src="" alt="Property Hero Photo" id="modalHeroPhoto" class="modal-hero-photo">
+        <div class="modal-thumb-strip" id="modalThumbStrip">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+
+      <!-- Property Info Area -->
+      <div class="modal-content-area">
+        <!-- Title & Location & Pricing Header -->
+        <div class="modal-header-row">
+          <div>
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <span class="badge badge-gold" id="modalCategory">Villa</span>
+              <span class="badge badge-purpose"><i class="fa-solid fa-circle-check"></i> Verified Title</span>
+            </div>
+            <h2 id="modalTitle" style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 6px; color: var(--color-primary);">Modern Residence</h2>
+            <div id="modalLocation" style="color: var(--color-text-secondary); font-size: 0.95rem;">Phase 6, DHA Lahore</div>
+          </div>
+
+          <div style="text-align: right;">
+            <div id="modalPricePKR" style="font-size: 2rem; font-weight: 900; color: var(--color-primary);">PKR 28.5 Crore</div>
+            <div id="modalPriceUSD" style="font-size: 1.05rem; font-weight: 700; color: var(--color-gold-dark);">$1,018,000 USD</div>
+          </div>
+        </div>
+
+        <!-- Key Specifications Bar -->
+        <div class="modal-specs-bar">
+          <div class="modal-spec-cell">
+            <span>Bedrooms</span>
+            <strong id="modalBeds">5</strong>
+          </div>
+          <div class="modal-spec-cell">
+            <span>Bathrooms</span>
+            <strong id="modalBaths">6</strong>
+          </div>
+          <div class="modal-spec-cell">
+            <span>Covered Area</span>
+            <strong id="modalArea">1 Kanal</strong>
+          </div>
+          <div class="modal-spec-cell">
+            <span>Year Built</span>
+            <strong id="modalYear">2025</strong>
+          </div>
+          <div class="modal-spec-cell">
+            <span>Car Garage</span>
+            <strong id="modalGarages">3 Cars</strong>
+          </div>
+          <div class="modal-spec-cell">
+            <span>Ownership</span>
+            <strong style="color: var(--color-success);">Direct Transfer</strong>
+          </div>
+        </div>
+
+        <!-- Description & Amenities Split -->
+        <div class="modal-split">
+          <!-- Left: Narrative & Highlights -->
+          <div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 12px;">Architectural Overview</h3>
+            <p id="modalDesc" style="color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 24px;">
+              Detailed property description.
+            </p>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 12px;">Property Highlights</h3>
+            <div id="modalHighlights" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+              <!-- Populated by js/app.js -->
+            </div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 12px;">Features & Amenities</h3>
+            <div class="amenities-grid" id="modalAmenities">
+              <!-- Populated by js/app.js -->
+            </div>
+          </div>
+
+          <!-- Right: Assigned Advisor Card & Direct Booking -->
+          <div>
+            <div style="background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 26px; position: sticky; top: 20px;">
+              <span class="kicker">Assigned Senior Advisor</span>
+              <div style="display: flex; gap: 16px; align-items: center; margin: 16px 0 20px;">
+                <img src="" alt="Advisor" id="modalAgentPhoto" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-gold);">
+                <div>
+                  <h4 id="modalAgentName" style="font-weight: 800; font-size: 1.15rem;">Tayba Sharif</h4>
+                  <div id="modalAgentTitle" style="font-size: 0.8rem; color: var(--color-gold-dark); font-weight: 700;">Principal Advisor</div>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem; margin-bottom: 22px;">
+                <a href="#" id="modalAgentPhone" style="display: flex; align-items: center; gap: 10px; color: var(--color-primary); font-weight: 600;">
+                  <i class="fa-solid fa-phone"></i> +92 300 8472910
+                </a>
+                <a href="#" id="modalAgentEmail" style="display: flex; align-items: center; gap: 10px; color: var(--color-primary); font-weight: 600;">
+                  <i class="fa-solid fa-envelope"></i> taybasharif96@gmail.com
+                </a>
+              </div>
+
+              <button class="btn btn-primary" id="modalTourBtn" style="width: 100%; margin-bottom: 10px;">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>Schedule Private Tour</span>
+              </button>
+              <button class="btn btn-outline-dark" style="width: 100%;" onclick="HavenzaApp.closeDetails()">
+                <span>Back to Listings</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
