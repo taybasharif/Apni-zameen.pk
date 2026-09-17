@@ -1,9 +1,9 @@
-﻿# Robots.txt for Havenza Properties
-# https://havenzaproperties.com
+# Robots.txt for Havenza Properties
+# https://havenza-properties.vercel.app/
 
 User-agent: *
 Allow: /
 Disallow: /admin.html
 
 # Sitemap location
-Sitemap: https://havenzaproperties.com/sitemap.xml
+Sitemap: https://havenza-properties.vercel.app/sitemap.xml
