@@ -1,0 +1,9 @@
+﻿# Robots.txt for Havenza Properties
+# https://havenzaproperties.com
+
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+# Sitemap location
+Sitemap: https://havenzaproperties.com/sitemap.xml

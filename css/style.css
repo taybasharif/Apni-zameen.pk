@@ -1451,15 +1451,16 @@ ul, ol {
 }
 
 /* --------------------------------------------------------------------------
-   Our Elite Agents
+   Signature Collections & Architectural Living
    -------------------------------------------------------------------------- */
-.agents-grid {
+.collections-showcase-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 26px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 45px;
 }
 
-.agent-card {
+.collection-card {
   background: var(--color-surface);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -1470,94 +1471,163 @@ ul, ol {
   flex-direction: column;
 }
 
-.agent-card:hover {
+.collection-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
   border-color: var(--color-gold);
 }
 
-.agent-photo-wrapper {
+.collection-img-wrap {
   position: relative;
-  aspect-ratio: 1 / 1.15;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background-color: #0b1c17;
 }
 
-.agent-photo {
+.collection-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
 }
 
-.agent-card:hover .agent-photo {
+.collection-card:hover .collection-img {
   transform: scale(1.06);
 }
 
-.agent-badge-vol {
+.collection-chip {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: rgba(6, 24, 19, 0.85);
+  top: 14px;
+  left: 14px;
+  background: rgba(6, 24, 19, 0.88);
   backdrop-filter: blur(8px);
   color: var(--color-gold);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  border: 1px solid rgba(197, 160, 89, 0.3);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.agent-card-body {
-  padding: 22px;
+.collection-content {
+  padding: 26px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.agent-name {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 4px;
-}
-
-.agent-title {
+.collection-eyebrow {
   color: var(--color-gold-dark);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
 }
 
-.agent-bio {
-  font-size: 0.85rem;
+.collection-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.collection-desc {
+  font-size: 0.88rem;
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: 16px;
+  line-height: 1.65;
+  margin-bottom: 18px;
 }
 
-.agent-contacts {
-  margin-top: auto;
-  border-top: 1px solid var(--color-border-light);
-  padding-top: 14px;
+.collection-features {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-size: 0.82rem;
+  gap: 8px;
+  margin-bottom: 22px;
+  font-size: 0.85rem;
+  color: var(--color-text);
 }
 
-.agent-contact-item {
+.collection-features span {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--color-text-secondary);
 }
 
-.agent-contact-item:hover {
-  color: var(--color-gold-dark);
+.collection-features i {
+  color: var(--color-gold);
+  font-size: 0.85rem;
+}
+
+.collection-action {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border-light);
+  padding-top: 18px;
+}
+
+/* Standards Banner */
+.standards-banner {
+  background: linear-gradient(135deg, #061813 0%, #0d2720 100%);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.standards-kicker {
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.standards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.standard-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.standard-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(197, 160, 89, 0.15);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.standard-text h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.standard-text p {
+  font-size: 0.82rem;
+  color: #a4b8b1;
+  line-height: 1.6;
 }
 
 /* --------------------------------------------------------------------------
@@ -2204,7 +2274,7 @@ ul, ol {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .agents-grid {
+  .standards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .stats-grid {
@@ -2250,6 +2320,9 @@ ul, ol {
   .modal-split {
     grid-template-columns: 1fr;
   }
+  .collections-showcase-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 650px) {
@@ -2269,7 +2342,7 @@ ul, ol {
   .services-grid {
     grid-template-columns: 1fr;
   }
-  .agents-grid {
+  .standards-grid {
     grid-template-columns: 1fr;
   }
   .stats-grid {

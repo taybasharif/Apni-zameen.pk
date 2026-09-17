@@ -1,6 +1,41 @@
-HAVENZA PROPERTIES — Property Details Final
+HAVENZA PROPERTIES — Luxury Real Estate Advisory
+========================================================================
 
-Only the Property Details page was upgraded. All other pages/design remain the same.
-Owner: Tayba Sharif
-Email: taybasharif96@gmail.com
-No phone number / WhatsApp added.
+1. SECRET ADMIN PANEL ACCESS (LOGO 3-CLICK TRIGGER):
+   • The brand logo (both in the header and footer) is interactive.
+   • Click the HAVENZA PROPERTIES brand logo 3 times consecutively (triple-click).
+   • The Admin Panel (admin.html) will open immediately.
+   • You can also open "admin.html" directly in your browser.
+   • The Admin Panel features:
+     - Private Viewing Inquiries (Status tracking: Pending / Contacted / Completed)
+     - Property Seller Valuation Leads
+     - Direct Client Messages & Enquiries
+     - Private Newsletter Subscribers
+     - Property Portfolio Management (Add new listings, delete, view)
+     - One-click Excel CSV export for all leads & inquiries
+     - Real-time client-side synchronization via localStorage
+   • To return to the main showcase, click "← Back to Website" at the top of the Admin Panel.
+
+2. AGENTS SECTION REMOVED & REPLACED WITH SIGNATURE COLLECTIONS:
+   • The old Agents section and agent profile cards have been completely removed.
+   • Replaced with an impressive, unique property-focused showcase:
+     "Signature Property Collections & Architectural Living":
+     - The Sky Penthouse Collection (Panoramic Duplexes & Penthouses)
+     - Grand Villa Sanctuaries (1 to 4 Kanal Architect-Designed Manors)
+     - Turnkey Designer Residences (Curated Bespoke Metropolitan Homes)
+     - Trophy Commercial Flagships (Grade-A High-Yield Corporate Assets)
+     - The 4 Havenza Architectural Standards (Triple-Tier Title Escrow, Energy Autonomy, Structural Mastery, Capital Preservation)
+   • Each collection includes direct filtering to view related luxury listings.
+
+3. STRICT PRIVACY & CONTACT POLICY:
+   • NO profile pictures added.
+   • NO office telephone or WhatsApp numbers added.
+   • All property advisory is discreet and direct.
+   • Owner & Founder: Tayba Sharif
+   • Direct Official Email: taybasharif96@gmail.com
+
+4. ALL WEBSITE DESIGN & FUNCTIONALITY PRESERVED:
+   • All luxury design system, interactive filters, currency toggle (PKR / USD),
+     property details modal, investment calculator, and booking systems remain 100% identical.
+
+Open index.html to explore the website.

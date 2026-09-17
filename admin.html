@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAVENZA PROPERTIES — CMS & Admin Dashboard</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Dedicated Admin Dashboard Styling */
+    body.admin-body {
+      background-color: #030d0a;
+      color: #e4eee9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-navbar {
+      background: rgba(6, 24, 19, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+    }
+
+    .admin-navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .admin-badge-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    .admin-main {
+      flex: 1;
+      padding: 40px 0 80px;
+    }
+
+    .admin-hero {
+      margin-bottom: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 25px;
+    }
+
+    .admin-hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 6px;
+    }
+
+    /* Stats Grid */
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+
+    .admin-stat-card {
+      background: #092019;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .admin-stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-gold);
+    }
+
+    .admin-stat-card i.stat-icon {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 2.2rem;
+      color: rgba(197, 160, 89, 0.18);
+    }
+
+    .admin-stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .admin-stat-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #9ab0a6;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Admin Tabs */
+    .admin-tabs {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 28px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .admin-tab {
+      background: none;
+      border: none;
+      color: #8fa29c;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .admin-tab:hover {
+      color: #ffffff;
+    }
+
+    .admin-tab.active {
+      color: var(--color-gold);
+      border-bottom-color: var(--color-gold);
+      background: rgba(197, 160, 89, 0.06);
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+
+    .tab-badge {
+      background: rgba(197, 160, 89, 0.2);
+      color: var(--color-gold);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    /* Tab Panes */
+    .admin-pane {
+      display: none;
+      background: #071c15;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+
+    .admin-pane.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Action bar inside pane */
+    .pane-header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .pane-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: #ffffff;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .admin-table th {
+      background: #0c2b21;
+      color: var(--color-gold);
+      padding: 14px 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+      white-space: nowrap;
+    }
+
+    .admin-table td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #d8e6e0;
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .status-pending {
+      background: rgba(234, 179, 8, 0.15);
+      color: #facc15;
+      border: 1px solid rgba(234, 179, 8, 0.3);
+    }
+
+    .status-contacted {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .status-completed {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .admin-btn-action {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--transition-fast);
+    }
+
+    .admin-btn-action:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: #030d0a;
+    }
+
+    .admin-btn-delete {
+      background: rgba(220, 38, 38, 0.15);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      color: #f87171;
+    }
+
+    .admin-btn-delete:hover {
+      background: #dc2626;
+      border-color: #dc2626;
+      color: #ffffff;
+    }
+
+    /* Modal Form inside Admin */
+    .admin-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .admin-modal-overlay.active {
+      display: flex;
+    }
+
+    .admin-modal-box {
+      background: #092019;
+      border: 1px solid var(--color-gold-border);
+      border-radius: var(--radius-md);
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .admin-form-group {
+      margin-bottom: 18px;
+    }
+
+    .admin-form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #c5d6cf;
+    }
+
+    .admin-form-control {
+      width: 100%;
+      background: #05140f;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+
+    .admin-form-control:focus {
+      outline: none;
+      border-color: var(--color-gold);
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- Top Admin Navbar -->
+  <header class="admin-navbar">
+    <div class="container admin-navbar-inner">
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <a href="index.html" class="brand-logo" title="Return to Website">
+          <div class="brand-crest">H</div>
+          <div class="brand-text">
+            <div class="brand-name">HAVENZA <span>PROPERTIES</span></div>
+            <div class="brand-tag">CMS & Management Console</div>
+          </div>
+        </a>
+        <span class="admin-badge-role"><i class="fa-solid fa-shield-halved"></i> Administrator</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span style="font-size: 0.88rem; color: #8fa29c;" class="hide-mobile">
+          Active: <strong style="color: #ffffff;">Tayba Sharif</strong>
+        </span>
+        <a href="index.html" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>← Back to Website</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <div class="container">
+      
+      <!-- Admin Header Area -->
+      <div class="admin-hero">
+        <div>
+          <div class="kicker"><i class="fa-solid fa-lock"></i> Private Executive Portal</div>
+          <h1>Havenza Properties CRM & Admin Console</h1>
+          <p style="color: #8fa29c; margin-top: 6px; max-width: 650px;">
+            Confidential administration console for managing high-value acquisition viewings, property valuation leads, direct client communications, and real estate portfolio listings.
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn btn-outline btn-sm" onclick="AdminPanel.exportToCSV()">
+            <i class="fa-solid fa-file-excel"></i> Export Leads (CSV)
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="AdminPanel.openAddPropertyModal()">
+            <i class="fa-solid fa-plus"></i> Add New Property
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Metric Stats Grid -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <i class="fa-solid fa-building stat-icon"></i>
+          <div class="admin-stat-num" id="statProperties">12</div>
+          <div class="admin-stat-label">Listed Properties</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <i class="fa-solid fa-calendar-check stat-icon"></i>
+          <div class="admin-stat-num" id="statViewings">0</div>
+          <div class="admin-stat-label">Private Viewing Inquiries</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <i class="fa-solid fa-file-invoice-dollar stat-icon"></i>
+          <div class="admin-stat-num" id="statSellers">0</div>
+          <div class="admin-stat-label">Property Seller Leads</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <i class="fa-solid fa-envelope-open-text stat-icon"></i>
+          <div class="admin-stat-num" id="statMessages">0</div>
+          <div class="admin-stat-label">Client Messages</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <i class="fa-solid fa-newspaper stat-icon"></i>
+          <div class="admin-stat-num" id="statSubscribers">0</div>
+          <div class="admin-stat-label">Private Subscribers</div>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="viewings" onclick="AdminPanel.switchTab('viewings')">
+          <i class="fa-solid fa-calendar-check"></i> Viewing Requests
+          <span class="tab-badge" id="badgeViewings">0</span>
+        </button>
+        <button class="admin-tab" data-tab="sellers" onclick="AdminPanel.switchTab('sellers')">
+          <i class="fa-solid fa-file-signature"></i> Seller Valuation Leads
+          <span class="tab-badge" id="badgeSellers">0</span>
+        </button>
+        <button class="admin-tab" data-tab="messages" onclick="AdminPanel.switchTab('messages')">
+          <i class="fa-solid fa-envelope"></i> Contact Messages
+          <span class="tab-badge" id="badgeMessages">0</span>
+        </button>
+        <button class="admin-tab" data-tab="newsletter" onclick="AdminPanel.switchTab('newsletter')">
+          <i class="fa-solid fa-paper-plane"></i> Newsletter Subscribers
+          <span class="tab-badge" id="badgeNewsletter">0</span>
+        </button>
+        <button class="admin-tab" data-tab="properties" onclick="AdminPanel.switchTab('properties')">
+          <i class="fa-solid fa-house-chimney"></i> Portfolio Listings
+          <span class="tab-badge" id="badgeProperties">12</span>
+        </button>
+        <button class="admin-tab" data-tab="tools" onclick="AdminPanel.switchTab('tools')">
+          <i class="fa-solid fa-sliders"></i> System & Data Tools
+        </button>
+      </div>
+
+      <!-- Tab 1: Viewing Requests -->
+      <div class="admin-pane active" id="pane-viewings">
+        <div class="pane-header-actions">
+          <h2 class="pane-title">Private Property Viewing Requests</h2>
+          <button class="admin-btn-action" onclick="AdminPanel.seedSampleViewings()">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Load Sample Inquiries
+          </button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Property Interest</th>
+                <th>Client Name</th>
+                <th>Contact Details</th>
+                <th>Requested Date & Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="viewingsTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 2: Seller Leads -->
+      <div class="admin-pane" id="pane-sellers">
+        <div class="pane-header-actions">
+          <h2 class="pane-title">Property Valuation & Seller Listings</h2>
+          <button class="admin-btn-action" onclick="AdminPanel.seedSampleSellers()">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Load Sample Leads
+          </button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Seller Name</th>
+                <th>Location & City</th>
+                <th>Property Type & Size</th>
+                <th>Contact</th>
+                <th>Notes / Asking Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="sellersTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 3: Contact Messages -->
+      <div class="admin-pane" id="pane-messages">
+        <div class="pane-header-actions">
+          <h2 class="pane-title">Direct Client Enquiries</h2>
+          <button class="admin-btn-action" onclick="AdminPanel.seedSampleMessages()">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Load Sample Messages
+          </button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Message Content</th>
+                <th>Date Received</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="messagesTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 4: Newsletter Subscribers -->
+      <div class="admin-pane" id="pane-newsletter">
+        <div class="pane-header-actions">
+          <h2 class="pane-title">Market Report Subscribers</h2>
+          <button class="admin-btn-action" onclick="AdminPanel.exportNewsletterCSV()">
+            <i class="fa-solid fa-download"></i> Export Emails
+          </button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Subscriber Email</th>
+                <th>Date Subscribed</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="newsletterTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 5: Portfolio Listings -->
+      <div class="admin-pane" id="pane-properties">
+        <div class="pane-header-actions">
+          <h2 class="pane-title">Active Property Portfolio</h2>
+          <button class="btn btn-primary btn-sm" onclick="AdminPanel.openAddPropertyModal()">
+            <i class="fa-solid fa-plus"></i> Add New Listing
+          </button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title & Location</th>
+                <th>Category</th>
+                <th>Purpose</th>
+                <th>Price (PKR)</th>
+                <th>Bed / Bath</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="propertiesTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 6: System & Data Tools -->
+      <div class="admin-pane" id="pane-tools">
+        <div class="pane-header-actions">
+          <h2 class="pane-title">System Controls & Storage Management</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: var(--radius-sm);">
+            <h3 style="color: #ffffff; margin-bottom: 8px;"><i class="fa-solid fa-file-csv" style="color: var(--color-gold);"></i> Data Export</h3>
+            <p style="font-size: 0.85rem; color: #8fa29c; margin-bottom: 16px;">Download all viewing tours, seller leads, and client messages into a consolidated Excel CSV format.</p>
+            <button class="btn btn-outline btn-sm" onclick="AdminPanel.exportToCSV()">Export All Leads to CSV</button>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: var(--radius-sm);">
+            <h3 style="color: #ffffff; margin-bottom: 8px;"><i class="fa-solid fa-database" style="color: var(--color-gold);"></i> Pre-Populate Demo Leads</h3>
+            <p style="font-size: 0.85rem; color: #8fa29c; margin-bottom: 16px;">Inject verified sample viewing bookings and valuation leads to test the CRM experience.</p>
+            <button class="btn btn-outline btn-sm" onclick="AdminPanel.seedAllData()">Inject All Sample Leads</button>
+          </div>
+
+          <div style="background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.25); padding: 22px; border-radius: var(--radius-sm);">
+            <h3 style="color: #f87171; margin-bottom: 8px;"><i class="fa-solid fa-triangle-exclamation"></i> Clear Inquiries</h3>
+            <p style="font-size: 0.85rem; color: #fca5a5; margin-bottom: 16px;">Reset all submitted inquiries and leads from local browser storage.</p>
+            <button class="admin-btn-action admin-btn-delete" onclick="AdminPanel.clearAllData()">Clear Inquiries Storage</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Add Property Modal -->
+  <div class="admin-modal-overlay" id="addPropertyModal">
+    <div class="admin-modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: #ffffff;">Add New Property Listing</h3>
+        <button class="btn btn-outline btn-sm" onclick="AdminPanel.closeAddPropertyModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="addPropertyForm" onsubmit="AdminPanel.saveNewProperty(event)">
+        <div class="admin-form-group">
+          <label>Property Title *</label>
+          <input type="text" id="propTitle" class="admin-form-control" placeholder="e.g. The Margalla Sky Penthouse" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="admin-form-group">
+            <label>Purpose *</label>
+            <select id="propPurpose" class="admin-form-control" required>
+              <option value="buy">For Sale</option>
+              <option value="rent">For Rent</option>
+            </select>
+          </div>
+
+          <div class="admin-form-group">
+            <label>Category *</label>
+            <select id="propCategory" class="admin-form-control" required>
+              <option value="Villa">Luxury Villa</option>
+              <option value="Penthouse">Sky Penthouse</option>
+              <option value="Apartment">Luxury Apartment</option>
+              <option value="House">Executive House</option>
+              <option value="Commercial">Commercial Plaza / Floor</option>
+              <option value="Plot">Prime Plot</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="admin-form-group">
+            <label>City *</label>
+            <select id="propCity" class="admin-form-control" required>
+              <option value="Lahore">Lahore</option>
+              <option value="Islamabad">Islamabad</option>
+              <option value="Karachi">Karachi</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+              <option value="Faisalabad">Faisalabad</option>
+            </select>
+          </div>
+
+          <div class="admin-form-group">
+            <label>Location & Address *</label>
+            <input type="text" id="propLocation" class="admin-form-control" placeholder="e.g. DHA Phase 6, Lahore" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="admin-form-group">
+            <label>Price in PKR *</label>
+            <input type="number" id="propPricePKR" class="admin-form-control" placeholder="e.g. 185000000" required>
+          </div>
+
+          <div class="admin-form-group">
+            <label>Price Display *</label>
+            <input type="text" id="propPriceDisplay" class="admin-form-control" placeholder="e.g. PKR 18.5 Crore" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;">
+          <div class="admin-form-group">
+            <label>Bedrooms</label>
+            <input type="number" id="propBeds" class="admin-form-control" value="5" min="0">
+          </div>
+
+          <div class="admin-form-group">
+            <label>Bathrooms</label>
+            <input type="number" id="propBaths" class="admin-form-control" value="6" min="0">
+          </div>
+
+          <div class="admin-form-group">
+            <label>Area Display</label>
+            <input type="text" id="propArea" class="admin-form-control" placeholder="e.g. 1 Kanal (5,400 Sq Ft)">
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Photo Image URL</label>
+          <input type="url" id="propImage" class="admin-form-control" placeholder="https://images.unsplash.com/photo-..." value="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85">
+        </div>
+
+        <div class="admin-form-group">
+          <label>Description</label>
+          <textarea id="propDesc" class="admin-form-control" rows="3" placeholder="Architectural description of the residence..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+          <button type="button" class="btn btn-outline" onclick="AdminPanel.closeAddPropertyModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Publish Property</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Load Global Data & Admin Engine -->
+  <script src="js/data.js"></script>
+  <script>
+    /**
+     * HAVENZA PROPERTIES — Admin Panel Controller
+     * Provides client-side CRM for viewing bookings, seller leads, contact messages,
+     * property listings, and CSV export. Synchronized via localStorage.
+     */
+    const AdminPanel = (function() {
+      'use strict';
+
+      // Storage Keys
+      const KEYS = {
+        VIEWINGS: 'havenza_viewings',
+        SELLERS: 'havenza_sellers',
+        MESSAGES: 'havenza_messages',
+        NEWSLETTER: 'havenza_newsletter',
+        CUSTOM_PROPERTIES: 'havenza_custom_properties'
+      };
+
+      // Sample Data for Immediate Experience
+      const SAMPLE_VIEWINGS = [
+        {
+          id: 'vw-1',
+          propertyTitle: 'The Grand Royale Villa',
+          name: 'Shaharyar Khan',
+          email: 's.khan@lahoreinvestments.pk',
+          phone: 'Via Email Preferred',
+          date: '2026-09-15',
+          time: '14:00',
+          status: 'Confirmed',
+          createdAt: '2026-09-08T10:30:00Z'
+        },
+        {
+          id: 'vw-2',
+          propertyTitle: 'The Margalla Horizon Penthouse',
+          name: 'Dr. Faisal Hameed',
+          email: 'faisal.hameed@outlook.com',
+          phone: 'Via Email Preferred',
+          date: '2026-09-18',
+          time: '16:30',
+          status: 'Pending',
+          createdAt: '2026-09-09T08:15:00Z'
+        }
+      ];
+
+      const SAMPLE_SELLERS = [
+        {
+          id: 'sel-1',
+          name: 'Mian Tariq Mehmood',
+          location: 'DHA Phase 5, Lahore',
+          type: 'Luxury Villa',
+          size: '2 Kanal',
+          email: 'tariq.mehmood@mehmoodgroup.com',
+          phone: 'Via Email Preferred',
+          notes: 'Asking PKR 45 Crore. Full imported marble, heated pool, built 2024.',
+          status: 'Contacted',
+          createdAt: '2026-09-07T14:20:00Z'
+        }
+      ];
+
+      const SAMPLE_MESSAGES = [
+        {
+          id: 'msg-1',
+          name: 'Zaryab Hassan (Overseas Pakistani - UK)',
+          email: 'zaryab.hassan@londonadvisory.co.uk',
+          subject: 'Commercial Acquisition in Islamabad Blue Area',
+          message: 'Interested in Grade-A corporate floorplates yielding 9%+ net. Please forward verified title dossiers.',
+          status: 'Unread',
+          createdAt: '2026-09-08T18:40:00Z'
+        }
+      ];
+
+      const SAMPLE_NEWSLETTER = [
+        { email: 'investor.portfolio@dubaiholdings.ae', date: '2026-09-05' },
+        { email: 'kamran.sharif@fintechpk.com', date: '2026-09-07' }
+      ];
+
+      function getStorage(key, fallback = []) {
+        try {
+          const item = localStorage.getItem(key);
+          return item ? JSON.parse(item) : fallback;
+        } catch (e) {
+          return fallback;
+        }
+      }
+
+      function setStorage(key, data) {
+        try {
+          localStorage.setItem(key, JSON.stringify(data));
+        } catch (e) {
+          console.error('Storage error:', e);
+        }
+      }
+
+      // Initialize defaults if empty
+      function checkDefaults() {
+        if (!localStorage.getItem(KEYS.VIEWINGS)) setStorage(KEYS.VIEWINGS, SAMPLE_VIEWINGS);
+        if (!localStorage.getItem(KEYS.SELLERS)) setStorage(KEYS.SELLERS, SAMPLE_SELLERS);
+        if (!localStorage.getItem(KEYS.MESSAGES)) setStorage(KEYS.MESSAGES, SAMPLE_MESSAGES);
+        if (!localStorage.getItem(KEYS.NEWSLETTER)) setStorage(KEYS.NEWSLETTER, SAMPLE_NEWSLETTER);
+      }
+
+      function getAllProperties() {
+        const custom = getStorage(KEYS.CUSTOM_PROPERTIES, []);
+        const base = (window.HAVENZA_DATA && window.HAVENZA_DATA.properties) ? window.HAVENZA_DATA.properties : [];
+        const map = new Map();
+        base.forEach(p => map.set(p.id, p));
+        custom.forEach(p => map.set(p.id, p));
+        return Array.from(map.values());
+      }
+
+      // Render Dashboard
+      function render() {
+        const viewings = getStorage(KEYS.VIEWINGS, []);
+        const sellers = getStorage(KEYS.SELLERS, []);
+        const messages = getStorage(KEYS.MESSAGES, []);
+        const newsletter = getStorage(KEYS.NEWSLETTER, []);
+        const properties = getAllProperties();
+
+        // Update stats
+        document.getElementById('statProperties').textContent = properties.length;
+        document.getElementById('statViewings').textContent = viewings.length;
+        document.getElementById('statSellers').textContent = sellers.length;
+        document.getElementById('statMessages').textContent = messages.length;
+        document.getElementById('statSubscribers').textContent = newsletter.length;
+
+        // Update badges
+        document.getElementById('badgeViewings').textContent = viewings.length;
+        document.getElementById('badgeSellers').textContent = sellers.length;
+        document.getElementById('badgeMessages').textContent = messages.length;
+        document.getElementById('badgeNewsletter').textContent = newsletter.length;
+        document.getElementById('badgeProperties').textContent = properties.length;
+
+        // Render Viewings Table
+        const vBody = document.getElementById('viewingsTableBody');
+        if (viewings.length === 0) {
+          vBody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:30px;color:#8fa29c;">No viewing requests recorded yet.</td></tr>`;
+        } else {
+          vBody.innerHTML = viewings.map(v => `
+            <tr>
+              <td><strong style="color:var(--color-gold);">${v.propertyTitle || 'Residence'}</strong></td>
+              <td>${v.name}</td>
+              <td>
+                <a href="mailto:${v.email}" style="color:var(--color-gold);"><i class="fa-regular fa-envelope"></i> ${v.email}</a>
+                ${v.phone && v.phone !== 'Via Email Preferred' ? `<div style="font-size:0.8rem;color:#8fa29c;"><i class="fa-solid fa-phone"></i> ${v.phone}</div>` : ''}
+              </td>
+              <td><i class="fa-regular fa-calendar"></i> ${v.date || 'TBD'} <span style="color:#8fa29c;">(${v.time || 'Flexible'})</span></td>
+              <td>
+                <span class="status-badge status-${(v.status || 'pending').toLowerCase()}">${v.status || 'Pending'}</span>
+              </td>
+              <td>
+                <button class="admin-btn-action" onclick="AdminPanel.toggleViewingStatus('${v.id}')">
+                  <i class="fa-solid fa-rotate"></i> Status
+                </button>
+                <button class="admin-btn-action admin-btn-delete" onclick="AdminPanel.deleteViewing('${v.id}')">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // Render Sellers Table
+        const sBody = document.getElementById('sellersTableBody');
+        if (sellers.length === 0) {
+          sBody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:30px;color:#8fa29c;">No seller leads recorded yet.</td></tr>`;
+        } else {
+          sBody.innerHTML = sellers.map(s => `
+            <tr>
+              <td><strong>${s.name}</strong></td>
+              <td>${s.location || 'Pakistan'}</td>
+              <td><span class="badge" style="background:rgba(197,160,89,0.15);color:var(--color-gold);padding:3px 8px;border-radius:4px;">${s.type || 'Property'}</span> ${s.size ? `· ${s.size}` : ''}</td>
+              <td><a href="mailto:${s.email}" style="color:var(--color-gold);"><i class="fa-regular fa-envelope"></i> ${s.email}</a></td>
+              <td style="max-width:250px;font-size:0.82rem;color:#b2c4bd;">${s.notes || 'No extra notes'}</td>
+              <td><span class="status-badge status-${(s.status || 'pending').toLowerCase()}">${s.status || 'Pending'}</span></td>
+              <td>
+                <button class="admin-btn-action" onclick="AdminPanel.toggleSellerStatus('${s.id}')"><i class="fa-solid fa-rotate"></i></button>
+                <button class="admin-btn-action admin-btn-delete" onclick="AdminPanel.deleteSeller('${s.id}')"><i class="fa-solid fa-trash"></i></button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // Render Messages Table
+        const mBody = document.getElementById('messagesTableBody');
+        if (messages.length === 0) {
+          mBody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:30px;color:#8fa29c;">No messages recorded yet.</td></tr>`;
+        } else {
+          mBody.innerHTML = messages.map(m => `
+            <tr>
+              <td>
+                <strong>${m.name}</strong><br>
+                <a href="mailto:${m.email}" style="font-size:0.8rem;color:var(--color-gold);"><i class="fa-regular fa-envelope"></i> ${m.email}</a>
+              </td>
+              <td style="color:#ffffff;">${m.subject || 'Direct Inquiry'}</td>
+              <td style="max-width:320px;font-size:0.85rem;color:#b2c4bd;">${m.message}</td>
+              <td style="font-size:0.8rem;color:#8fa29c;">${m.createdAt ? new Date(m.createdAt).toLocaleDateString() : 'Recent'}</td>
+              <td><span class="status-badge status-${(m.status || 'unread').toLowerCase()}">${m.status || 'Unread'}</span></td>
+              <td>
+                <a href="mailto:${m.email}?subject=RE:%20Havenza%20Properties%20Inquiry" class="admin-btn-action"><i class="fa-solid fa-reply"></i> Reply</a>
+                <button class="admin-btn-action admin-btn-delete" onclick="AdminPanel.deleteMessage('${m.id}')"><i class="fa-solid fa-trash"></i></button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // Render Newsletter Table
+        const nBody = document.getElementById('newsletterTableBody');
+        if (newsletter.length === 0) {
+          nBody.innerHTML = `<tr><td colspan="3" style="text-align:center;padding:30px;color:#8fa29c;">No subscribers yet.</td></tr>`;
+        } else {
+          nBody.innerHTML = newsletter.map((n, i) => `
+            <tr>
+              <td><strong>${typeof n === 'string' ? n : n.email}</strong></td>
+              <td style="color:#8fa29c;">${n.date || 'Recent'}</td>
+              <td>
+                <button class="admin-btn-action admin-btn-delete" onclick="AdminPanel.deleteNewsletter(${i})"><i class="fa-solid fa-trash"></i></button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // Render Properties Table
+        const pBody = document.getElementById('propertiesTableBody');
+        pBody.innerHTML = properties.map(p => `
+          <tr>
+            <td style="font-size:0.75rem;color:#8fa29c;">${p.id}</td>
+            <td>
+              <strong style="color:#ffffff;">${p.title}</strong>
+              <div style="font-size:0.78rem;color:#8fa29c;">${p.location}</div>
+            </td>
+            <td>${p.category}</td>
+            <td><span class="status-badge status-${p.purpose === 'buy' ? 'completed' : 'contacted'}">${p.purpose === 'buy' ? 'Sale' : 'Rent'}</span></td>
+            <td style="color:var(--color-gold);font-weight:700;">${p.priceDisplayPKR}</td>
+            <td>${p.bedrooms || '—'} Beds · ${p.bathrooms || '—'} Baths</td>
+            <td>
+              <a href="index.html#properties" target="_blank" class="admin-btn-action" title="View on site"><i class="fa-regular fa-eye"></i> View</a>
+              <button class="admin-btn-action admin-btn-delete" onclick="AdminPanel.deleteProperty('${p.id}')"><i class="fa-solid fa-trash"></i></button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      // Tab switching
+      function switchTab(tabId) {
+        document.querySelectorAll('.admin-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+        document.querySelectorAll('.admin-pane').forEach(p => p.classList.toggle('active', p.id === `pane-${tabId}`));
+      }
+
+      // Status toggles & deletes
+      function toggleViewingStatus(id) {
+        const list = getStorage(KEYS.VIEWINGS, []);
+        const item = list.find(v => v.id === id);
+        if (item) {
+          if (item.status === 'Pending') item.status = 'Contacted';
+          else if (item.status === 'Contacted') item.status = 'Completed';
+          else item.status = 'Pending';
+          setStorage(KEYS.VIEWINGS, list);
+          render();
+        }
+      }
+
+      function deleteViewing(id) {
+        if (!confirm('Are you sure you want to remove this viewing request?')) return;
+        let list = getStorage(KEYS.VIEWINGS, []);
+        list = list.filter(v => v.id !== id);
+        setStorage(KEYS.VIEWINGS, list);
+        render();
+      }
+
+      function toggleSellerStatus(id) {
+        const list = getStorage(KEYS.SELLERS, []);
+        const item = list.find(s => s.id === id);
+        if (item) {
+          if (item.status === 'Pending') item.status = 'Contacted';
+          else if (item.status === 'Contacted') item.status = 'Completed';
+          else item.status = 'Pending';
+          setStorage(KEYS.SELLERS, list);
+          render();
+        }
+      }
+
+      function deleteSeller(id) {
+        if (!confirm('Remove this seller valuation record?')) return;
+        let list = getStorage(KEYS.SELLERS, []);
+        list = list.filter(s => s.id !== id);
+        setStorage(KEYS.SELLERS, list);
+        render();
+      }
+
+      function deleteMessage(id) {
+        if (!confirm('Delete this message?')) return;
+        let list = getStorage(KEYS.MESSAGES, []);
+        list = list.filter(m => m.id !== id);
+        setStorage(KEYS.MESSAGES, list);
+        render();
+      }
+
+      function deleteNewsletter(index) {
+        let list = getStorage(KEYS.NEWSLETTER, []);
+        list.splice(index, 1);
+        setStorage(KEYS.NEWSLETTER, list);
+        render();
+      }
+
+      function deleteProperty(id) {
+        if (!confirm(`Are you sure you want to remove property listing ${id}?`)) return;
+        let custom = getStorage(KEYS.CUSTOM_PROPERTIES, []);
+        custom = custom.filter(p => p.id !== id);
+        const base = (window.HAVENZA_DATA && window.HAVENZA_DATA.properties) ? window.HAVENZA_DATA.properties : [];
+        const updatedBase = base.filter(p => p.id !== id);
+        if (window.HAVENZA_DATA) window.HAVENZA_DATA.properties = updatedBase;
+        setStorage(KEYS.CUSTOM_PROPERTIES, updatedBase);
+        render();
+      }
+
+      // Add Property Modal Handlers
+      function openAddPropertyModal() {
+        document.getElementById('addPropertyModal').classList.add('active');
+      }
+
+      function closeAddPropertyModal() {
+        document.getElementById('addPropertyModal').classList.remove('active');
+      }
+
+      function saveNewProperty(e) {
+        e.preventDefault();
+        const pkr = parseInt(document.getElementById('propPricePKR').value, 10);
+        const newProp = {
+          id: 'hp-' + Math.floor(100 + Math.random() * 900),
+          title: document.getElementById('propTitle').value,
+          purpose: document.getElementById('propPurpose').value,
+          category: document.getElementById('propCategory').value,
+          city: document.getElementById('propCity').value,
+          location: document.getElementById('propLocation').value,
+          address: document.getElementById('propLocation').value,
+          pricePKR: pkr,
+          priceDisplayPKR: document.getElementById('propPriceDisplay').value,
+          priceUSD: Math.round(pkr / 280),
+          priceDisplayUSD: '$' + Math.round(pkr / 280).toLocaleString(),
+          bedrooms: parseInt(document.getElementById('propBeds').value, 10) || 4,
+          bathrooms: parseInt(document.getElementById('propBaths').value, 10) || 5,
+          areaDisplay: document.getElementById('propArea').value || '1 Kanal',
+          images: [document.getElementById('propImage').value],
+          description: document.getElementById('propDesc').value || 'Exclusive luxury residence listed by Havenza Properties.',
+          featured: true,
+          status: 'Available',
+          highlights: ['Prime central sector', 'Premium architecture', 'Legal title clearance'],
+          amenities: ['Smart Security', 'Designer Kitchen', 'Private Parking', 'Marble Flooring'],
+          advisor: {
+            name: 'Tayba Sharif',
+            title: 'Founder & Principal Advisor',
+            email: 'taybasharif96@gmail.com'
+          }
+        };
+
+        const existingCustom = getStorage(KEYS.CUSTOM_PROPERTIES, (window.HAVENZA_DATA ? window.HAVENZA_DATA.properties : []));
+        existingCustom.unshift(newProp);
+        setStorage(KEYS.CUSTOM_PROPERTIES, existingCustom);
+
+        closeAddPropertyModal();
+        render();
+        alert('New luxury property listing published successfully! It is now live on the website.');
+      }
+
+      // Export CSV
+      function exportToCSV() {
+        const viewings = getStorage(KEYS.VIEWINGS, []);
+        const sellers = getStorage(KEYS.SELLERS, []);
+        const messages = getStorage(KEYS.MESSAGES, []);
+
+        let csv = 'Type,Name,Email,Property/Subject,Details/Notes,Date,Status\n';
+
+        viewings.forEach(v => {
+          csv += `"Viewing Request","${v.name || ''}","${v.email || ''}","${v.propertyTitle || ''}","${v.date || ''} ${v.time || ''}","${v.createdAt || ''}","${v.status || ''}"\n`;
+        });
+
+        sellers.forEach(s => {
+          csv += `"Seller Lead","${s.name || ''}","${s.email || ''}","${s.type || ''} - ${s.location || ''}","${(s.notes || '').replace(/"/g, '""')}","${s.createdAt || ''}","${s.status || ''}"\n`;
+        });
+
+        messages.forEach(m => {
+          csv += `"Contact Message","${m.name || ''}","${m.email || ''}","${m.subject || ''}","${(m.message || '').replace(/"/g, '""')}","${m.createdAt || ''}","${m.status || ''}"\n`;
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Havenza_Properties_Leads_${new Date().toISOString().split('T')[0]}.csv`;
+        a.click();
+      }
+
+      function exportNewsletterCSV() {
+        const newsletter = getStorage(KEYS.NEWSLETTER, []);
+        let csv = 'Email,Date\n';
+        newsletter.forEach(n => {
+          csv += `"${typeof n === 'string' ? n : n.email}","${n.date || 'Recent'}"\n`;
+        });
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Havenza_Newsletter_Subscribers_${new Date().toISOString().split('T')[0]}.csv`;
+        a.click();
+      }
+
+      function seedAllData() {
+        setStorage(KEYS.VIEWINGS, SAMPLE_VIEWINGS);
+        setStorage(KEYS.SELLERS, SAMPLE_SELLERS);
+        setStorage(KEYS.MESSAGES, SAMPLE_MESSAGES);
+        setStorage(KEYS.NEWSLETTER, SAMPLE_NEWSLETTER);
+        render();
+        alert('Sample inquiries and leads injected into database.');
+      }
+
+      function clearAllData() {
+        if (!confirm('This will wipe all submitted viewing requests, seller leads, and contact messages from storage. Proceed?')) return;
+        localStorage.removeItem(KEYS.VIEWINGS);
+        localStorage.removeItem(KEYS.SELLERS);
+        localStorage.removeItem(KEYS.MESSAGES);
+        localStorage.removeItem(KEYS.NEWSLETTER);
+        render();
+      }
+
+      // Init
+      function init() {
+        checkDefaults();
+        render();
+      }
+
+      return {
+        init,
+        switchTab,
+        toggleViewingStatus,
+        deleteViewing,
+        toggleSellerStatus,
+        deleteSeller,
+        deleteMessage,
+        deleteNewsletter,
+        deleteProperty,
+        openAddPropertyModal,
+        closeAddPropertyModal,
+        saveNewProperty,
+        exportToCSV,
+        exportNewsletterCSV,
+        seedAllData,
+        clearAllData,
+        seedSampleViewings: () => { setStorage(KEYS.VIEWINGS, SAMPLE_VIEWINGS); render(); },
+        seedSampleSellers: () => { setStorage(KEYS.SELLERS, SAMPLE_SELLERS); render(); },
+        seedSampleMessages: () => { setStorage(KEYS.MESSAGES, SAMPLE_MESSAGES); render(); }
+      };
+    })();
+
+    document.addEventListener('DOMContentLoaded', AdminPanel.init);
+  </script>
+</body>
+</html>

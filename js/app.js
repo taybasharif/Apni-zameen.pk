@@ -468,17 +468,12 @@
       `).join('');
     }
 
-    // Agent
-    if (agentPhoto) agentPhoto.src = property.agent.photo;
-    if (agentName) agentName.textContent = property.agent.name;
-    if (agentTitle) agentTitle.textContent = property.agent.title;
-    if (agentPhone) {
-      agentPhone.href = `tel:${property.agent.phone}`;
-      agentPhone.innerHTML = `<i class="fa-solid fa-phone"></i> ${property.agent.phone}`;
-    }
+    // Advisory Contact
+    if (agentName) agentName.textContent = property.agent?.name || 'Tayba Sharif';
+    if (agentTitle) agentTitle.textContent = property.agent?.title || 'Founder & Principal Advisory';
     if (agentEmail) {
-      agentEmail.href = `mailto:${property.agent.email}?subject=Inquiry%20Regarding%20${encodeURIComponent(property.title)}`;
-      agentEmail.innerHTML = `<i class="fa-solid fa-envelope"></i> ${property.agent.email}`;
+      agentEmail.href = `mailto:${property.agent?.email || 'taybasharif96@gmail.com'}?subject=Inquiry%20Regarding%20${encodeURIComponent(property.title)}`;
+      agentEmail.innerHTML = `<i class="fa-solid fa-envelope" style="color:var(--color-gold);"></i> ${property.agent?.email || 'taybasharif96@gmail.com'}`;
     }
 
     // Tour CTA
@@ -660,8 +655,14 @@
   function renderTestimonial() {
     const container = document.getElementById('testimonialWrapper');
     if (!container) return;
+    if (!HAVENZA_DATA.testimonials || HAVENZA_DATA.testimonials.length === 0) {
+      const section = container.closest('section');
+      if (section) section.style.display = 'none';
+      return;
+    }
 
     const t = HAVENZA_DATA.testimonials[state.currentTestimonial];
+    if (!t) return;
     container.innerHTML = `
       <div class="testimonial-card">
         <div class="test-stars">
@@ -716,40 +717,29 @@
     `).join('');
   }
 
-  // Render Agents Section
-  function renderAgents() {
-    const container = document.getElementById('agentsGrid');
-    if (!container) return;
+  // Filter by Signature Collection Helper
+  function filterByCollection(category) {
+    state.activeFilter.category = category;
+    
+    // Update category pill UI if present
+    document.querySelectorAll('.filter-pill[data-filter="category"]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.value === category);
+    });
 
-    container.innerHTML = HAVENZA_DATA.agents.map(a => `
-      <article class="agent-card">
-        <div class="agent-photo-wrapper">
-          <img src="${a.photo}" alt="${a.name}" class="agent-photo" loading="lazy">
-          <div class="agent-badge-vol"><i class="fa-solid fa-award"></i> ${a.salesVolume}</div>
-        </div>
-        <div class="agent-card-body">
-          <div class="agent-title">${a.title}</div>
-          <h3 class="agent-name">${a.name}</h3>
-          <p class="agent-bio">${a.bio}</p>
-          <div class="agent-contacts">
-            <a href="tel:${a.phone}" class="agent-contact-item">
-              <i class="fa-solid fa-phone" style="color:var(--color-gold);"></i> ${a.phone}
-            </a>
-            <a href="mailto:${a.email}" class="agent-contact-item">
-              <i class="fa-solid fa-envelope" style="color:var(--color-gold);"></i> ${a.email}
-            </a>
-          </div>
-        </div>
-      </article>
-    `).join('');
+    renderProperties();
+
+    // Smooth scroll to properties portfolio
+    const target = document.getElementById('properties');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
-  // Form Submissions
+  // Form Submissions with LocalStorage Persistence
   function setupForms() {
     // 1. Viewing Form
     const viewingForm = document.getElementById('viewingForm');
     if (viewingForm) {
-      // Set min date to today
       const dateInput = document.getElementById('viewingDate');
       if (dateInput) {
         const today = new Date().toISOString().split('T')[0];
@@ -760,6 +750,7 @@
         e.preventDefault();
         const name = document.getElementById('viewingFullName').value;
         const email = document.getElementById('viewingEmail').value;
+        const phone = document.getElementById('viewingPhone')?.value || '';
         const propId = document.getElementById('viewingPropertySelect').value;
         const date = document.getElementById('viewingDate').value;
         const time = document.getElementById('viewingTime').value;
@@ -767,8 +758,27 @@
         const prop = HAVENZA_DATA.properties.find(p => p.id === propId);
         const propTitle = prop ? prop.title : 'Selected Property';
 
+        // Persist to localStorage for Admin Panel
+        try {
+          const viewings = JSON.parse(localStorage.getItem('havenza_viewings') || '[]');
+          viewings.unshift({
+            id: 'vw-' + Date.now(),
+            propertyTitle: propTitle,
+            name: name,
+            email: email,
+            phone: phone,
+            date: date,
+            time: time,
+            status: 'Pending',
+            createdAt: new Date().toISOString()
+          });
+          localStorage.setItem('havenza_viewings', JSON.stringify(viewings));
+        } catch (err) {
+          console.warn('Storage save error:', err);
+        }
+
         // Display Success Toast & Confirmation
-        showToast(`Viewing request confirmed for ${name}! Our senior advisor will call you shortly.`, 'fa-circle-check');
+        showToast(`Viewing request confirmed for ${name}! Tayba Sharif and our acquisitions team will email you promptly.`, 'fa-circle-check');
         
         // Reset form
         viewingForm.reset();
@@ -780,6 +790,33 @@
     if (sellForm) {
       sellForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        const name = document.getElementById('sellName')?.value || '';
+        const phone = document.getElementById('sellPhone')?.value || '';
+        const email = document.getElementById('sellEmail')?.value || '';
+        const location = document.getElementById('sellLocation')?.value || '';
+        const type = document.getElementById('sellType')?.value || '';
+        const size = document.getElementById('sellSize')?.value || '';
+        const notes = document.getElementById('sellNotes')?.value || '';
+
+        try {
+          const sellers = JSON.parse(localStorage.getItem('havenza_sellers') || '[]');
+          sellers.unshift({
+            id: 'sel-' + Date.now(),
+            name: name,
+            phone: phone,
+            email: email,
+            location: location,
+            type: type,
+            size: size,
+            notes: notes,
+            status: 'Pending',
+            createdAt: new Date().toISOString()
+          });
+          localStorage.setItem('havenza_sellers', JSON.stringify(sellers));
+        } catch (err) {
+          console.warn('Storage save error:', err);
+        }
+
         showToast('Property valuation request submitted to Tayba Sharif and acquisitions team!', 'fa-file-signature');
         sellForm.reset();
       });
@@ -790,7 +827,28 @@
     if (contactForm) {
       contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        showToast('Thank you for contacting Havenza Properties. We will reply promptly!', 'fa-paper-plane');
+        const name = document.getElementById('contactName')?.value || '';
+        const email = document.getElementById('contactEmail')?.value || '';
+        const subject = document.getElementById('contactSubject')?.value || '';
+        const message = document.getElementById('contactMsg')?.value || '';
+
+        try {
+          const msgs = JSON.parse(localStorage.getItem('havenza_messages') || '[]');
+          msgs.unshift({
+            id: 'msg-' + Date.now(),
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+            status: 'Unread',
+            createdAt: new Date().toISOString()
+          });
+          localStorage.setItem('havenza_messages', JSON.stringify(msgs));
+        } catch (err) {
+          console.warn('Storage save error:', err);
+        }
+
+        showToast('Thank you for contacting Havenza Properties. We will reply promptly to your email!', 'fa-paper-plane');
         contactForm.reset();
       });
     }
@@ -800,10 +858,50 @@
     if (newsletterForm) {
       newsletterForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        if (emailInput && emailInput.value) {
+          try {
+            const subs = JSON.parse(localStorage.getItem('havenza_newsletter') || '[]');
+            subs.unshift({ email: emailInput.value, date: new Date().toISOString().split('T')[0] });
+            localStorage.setItem('havenza_newsletter', JSON.stringify(subs));
+          } catch (err) {}
+        }
         showToast('Subscribed to Havenza Private Market Reports & Updates!', 'fa-envelope-open-text');
         newsletterForm.reset();
       });
     }
+  }
+
+  // Secret Brand Logo Triple-Click Listener to Open Admin Panel
+  function setupLogoAdminTrigger() {
+    let logoClicks = 0;
+    let clickTimer = null;
+
+    const brandLogos = document.querySelectorAll('.brand-logo');
+    brandLogos.forEach(logo => {
+      logo.style.cursor = 'pointer';
+      logo.addEventListener('click', function (e) {
+        logoClicks++;
+        clearTimeout(clickTimer);
+
+        if (logoClicks >= 3) {
+          e.preventDefault();
+          e.stopPropagation();
+          logoClicks = 0;
+
+          showToast('Secret Access: Opening Havenza Admin Panel...', 'fa-shield-halved');
+          setTimeout(() => {
+            window.location.href = 'admin.html';
+          }, 450);
+          return false;
+        }
+
+        // Reset click counter if not clicked 3 times within 2.5 seconds
+        clickTimer = setTimeout(() => {
+          logoClicks = 0;
+        }, 2500);
+      });
+    });
   }
 
   // Mobile Navigation Setup
@@ -865,15 +963,26 @@
 
   // Initialize Whole App
   function init() {
+    // Sync custom properties created from Admin Panel
+    try {
+      const customProps = localStorage.getItem('havenza_custom_properties');
+      if (customProps) {
+        const parsed = JSON.parse(customProps);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          window.HAVENZA_DATA.properties = parsed;
+        }
+      }
+    } catch (e) {}
+
     loadFavorites();
     renderProperties();
     populatePropertySelects();
     renderServices();
-    renderAgents();
     renderTestimonial();
     renderFaqs();
     initMortgageCalculator();
     setupForms();
+    setupLogoAdminTrigger();
     setupMobileNav();
     setupHeaderScroll();
     setupSearchTabs();
@@ -919,6 +1028,8 @@
     toggleFav,
     setPillFilter,
     resetFilters,
+    filterByCollection,
+    openAdmin: () => { window.location.href = 'admin.html'; },
     submitHeroSearch,
     openDetails,
     closeDetails,

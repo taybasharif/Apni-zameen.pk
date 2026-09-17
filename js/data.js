@@ -53,13 +53,9 @@ const HAVENZA_DATA = {
         'CCTV & Smart Security', 'Lush Landscaped Lawn', 'Walk-in Closets', '3-Car Garage'
       ],
       agent: {
-        id: 'agent-1',
         name: 'Tayba Sharif',
-        title: 'Principal Advisor & Founder',
-        phone: '+92 42 35718900 (Office)',
-        email: 'taybasharif96@gmail.com',
-        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85',
-        experience: '12+ Years Luxury Advisory'
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -104,13 +100,9 @@ const HAVENZA_DATA = {
         'Underground Valet Parking', 'Smart Climate Control', 'Wine/Beverage Cooler'
       ],
       agent: {
-        id: 'agent-2',
-        name: 'Daniyal Qureshi',
-        title: 'Senior Portfolio Director (Capital Region)',
-        phone: '+92 321 9554312',
-        email: 'daniyal.q@havenzaproperties.com',
-        photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=85',
-        experience: '9+ Years Luxury Advisory'
+        name: 'Tayba Sharif',
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -155,13 +147,9 @@ const HAVENZA_DATA = {
         'Professional Gym', 'Steam & Sauna Suite', 'High Perimeter Security'
       ],
       agent: {
-        id: 'agent-3',
-        name: 'Zainab Merchant',
-        title: 'Coastal & Commercial Specialist',
-        phone: '+92 333 2189045',
-        email: 'zainab.m@havenzaproperties.com',
-        photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=85',
-        experience: '11+ Years Coastal Luxury'
+        name: 'Tayba Sharif',
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -203,13 +191,9 @@ const HAVENZA_DATA = {
         'Solar Generation System', 'Lounge with Fireplace', 'Gated Community 24/7', 'Smart Security'
       ],
       agent: {
-        id: 'agent-1',
         name: 'Tayba Sharif',
-        title: 'Principal Advisor & Founder',
-        phone: '+92 42 35718900 (Office)',
-        email: 'taybasharif96@gmail.com',
-        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85',
-        experience: '12+ Years Luxury Advisory'
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -251,13 +235,9 @@ const HAVENZA_DATA = {
         'Covered Parking', 'Kohsar Market Proximity', 'Central Heating & AC', 'Elevator'
       ],
       agent: {
-        id: 'agent-2',
-        name: 'Daniyal Qureshi',
-        title: 'Senior Portfolio Director (Capital Region)',
-        phone: '+92 321 9554312',
-        email: 'daniyal.q@havenzaproperties.com',
-        photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=85',
-        experience: '9+ Years Luxury Advisory'
+        name: 'Tayba Sharif',
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -299,13 +279,9 @@ const HAVENZA_DATA = {
         'High-Speed Elevators', 'Full Power Redundancy', 'Fire & Life Safety Systems', 'Acoustic Glass'
       ],
       agent: {
-        id: 'agent-1',
         name: 'Tayba Sharif',
-        title: 'Principal Advisor & Founder',
-        phone: '+92 42 35718900 (Office)',
-        email: 'taybasharif96@gmail.com',
-        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85',
-        experience: '12+ Years Luxury Advisory'
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -346,13 +322,9 @@ const HAVENZA_DATA = {
         'Underground Electrification', 'Water Filtration Plant', 'CCTV Equipped'
       ],
       agent: {
-        id: 'agent-4',
-        name: 'Hamza Farooqi',
-        title: 'Residential Sales Executive',
-        phone: '+92 345 5123987',
-        email: 'hamza.f@havenzaproperties.com',
-        photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=85',
-        experience: '6+ Years Property Specialist'
+        name: 'Tayba Sharif',
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -392,13 +364,9 @@ const HAVENZA_DATA = {
         '3-Car Driveway', 'Servant Quarters', 'Modern Kitchen'
       ],
       agent: {
-        id: 'agent-4',
-        name: 'Hamza Farooqi',
-        title: 'Residential Sales Executive',
-        phone: '+92 345 5123987',
-        email: 'hamza.f@havenzaproperties.com',
-        photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=85',
-        experience: '6+ Years Property Specialist'
+        name: 'Tayba Sharif',
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -438,13 +406,9 @@ const HAVENZA_DATA = {
         '24/7 Security', 'Covered Parking', 'Standby Generator'
       ],
       agent: {
-        id: 'agent-3',
-        name: 'Zainab Merchant',
-        title: 'Coastal & Commercial Specialist',
-        phone: '+92 333 2189045',
-        email: 'zainab.m@havenzaproperties.com',
-        photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=85',
-        experience: '11+ Years Coastal Luxury'
+        name: 'Tayba Sharif',
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -484,13 +448,9 @@ const HAVENZA_DATA = {
         'Gas & Electricity Connected', 'Water Storage Tank'
       ],
       agent: {
-        id: 'agent-4',
-        name: 'Hamza Farooqi',
-        title: 'Residential Sales Executive',
-        phone: '+92 345 5123987',
-        email: 'hamza.f@havenzaproperties.com',
-        photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=85',
-        experience: '6+ Years Property Specialist'
+        name: 'Tayba Sharif',
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -530,13 +490,9 @@ const HAVENZA_DATA = {
         'Broad 50ft & 100ft Roads', 'DHA Transfer Direct', 'High Capital Upside'
       ],
       agent: {
-        id: 'agent-1',
         name: 'Tayba Sharif',
-        title: 'Principal Advisor & Founder',
-        phone: '+92 42 35718900 (Office)',
-        email: 'taybasharif96@gmail.com',
-        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85',
-        experience: '12+ Years Luxury Advisory'
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     },
     {
@@ -576,13 +532,9 @@ const HAVENZA_DATA = {
         'Reserved Parking', '24/7 Security Guard', 'Intercom & CCTV'
       ],
       agent: {
-        id: 'agent-1',
         name: 'Tayba Sharif',
-        title: 'Principal Advisor & Founder',
-        phone: '+92 42 35718900 (Office)',
-        email: 'taybasharif96@gmail.com',
-        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85',
-        experience: '12+ Years Luxury Advisory'
+        title: 'Founder & Principal Advisory',
+        email: 'taybasharif96@gmail.com'
       }
     }
   ],
@@ -633,88 +585,56 @@ const HAVENZA_DATA = {
     }
   ],
 
-  // Elite Real Estate Agents & Advisors
-  agents: [
+  // Signature Property Collections & Architectural Concepts
+  collections: [
     {
-      id: 'agent-1',
-      name: 'Tayba Sharif',
-      title: 'Principal Advisor & Founder',
-      specialty: 'High-Value Estates & Luxury Penthouses',
-      experience: '12+ Years Advisory Experience',
-      salesVolume: 'PKR 18.5 Billion+ Closed',
-      email: 'taybasharif96@gmail.com',
-      phone: '+92 42 35718900 (Office)',
-      photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85',
-      bio: 'Leading Havenza Properties with a relentless standard of discretion, aesthetic mastery, and institutional market intelligence for Pakistan’s most discerning homeowners and investors.'
+      id: 'col-penthouses',
+      title: 'The Sky Penthouse Collection',
+      tagline: 'Panoramic Terraces & Sky Duplexes',
+      category: 'Penthouse',
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85',
+      badge: 'Islamabad & Karachi',
+      description: 'Exclusive sky duplexes with double-height ceiling voids, private infinity splash pools, and dramatic uninterrupted city vistas.',
+      specs: ['Floor-to-Ceiling Glass', 'Private Elevator Access', 'Acoustic Sound Damping'],
+      filterTarget: 'Penthouse'
     },
     {
-      id: 'agent-2',
-      name: 'Daniyal Qureshi',
-      title: 'Senior Portfolio Director (Capital Region)',
-      specialty: 'Diplomatic Enclaves & Margalla Heights',
-      experience: '9+ Years Advisory Experience',
-      salesVolume: 'PKR 9.2 Billion+ Closed',
-      email: 'daniyal.q@havenzaproperties.com',
-      phone: '+92 321 9554312',
-      photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=85',
-      bio: 'Specializing in prime Islamabad sectors (F-6, F-7, E-7) and turnkey luxury penthouses, advising overseas Pakistani clients across the UK, UAE, and North America.'
+      id: 'col-villas',
+      title: 'Grand Villa Sanctuaries',
+      tagline: '1 to 4 Kanal Masterpiece Manors',
+      category: 'Villa',
+      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85',
+      badge: 'DHA Lahore & Margalla Hills',
+      description: 'Gated architectural estates featuring European minimalist elevations, subterranean entertainment lounges, and heated pool pavilions.',
+      specs: ['20KW Hybrid Solar Grid', 'Heated Lap Pools & Spas', 'Italian Scavolini Kitchens'],
+      filterTarget: 'Villa'
     },
     {
-      id: 'agent-3',
-      name: 'Zainab Merchant',
-      title: 'Coastal & Commercial Specialist',
-      specialty: 'Clifton, DHA Phase 8 & Waterfront Mansions',
-      experience: '11+ Years Advisory Experience',
-      salesVolume: 'PKR 14.8 Billion+ Closed',
-      email: 'zainab.m@havenzaproperties.com',
-      phone: '+92 333 2189045',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=85',
-      bio: 'Karachi’s leading authority on oceanfront estates, Grade-A corporate towers, and commercial land acquisitions, renowned for negotiating premier coastal transactions.'
+      id: 'col-residences',
+      title: 'Turnkey Designer Residences',
+      tagline: 'Curated Urban Residences & Houses',
+      category: 'House',
+      image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85',
+      badge: 'Gulberg & Clifton',
+      description: 'Impeccably finished homes featuring Spanish Porcelanosa ceramics, bespoke walnut millwork, and integrated smart-home automation.',
+      specs: ['Move-in Turnkey Quality', 'Biometric Smart Access', 'Multi-Zone VRF Climate'],
+      filterTarget: 'House'
     },
     {
-      id: 'agent-4',
-      name: 'Hamza Farooqi',
-      title: 'Residential Sales Executive',
-      specialty: 'DHA Lahore, Bahria & Canal Road Developments',
-      experience: '6+ Years Property Specialist',
-      salesVolume: 'PKR 5.4 Billion+ Closed',
-      email: 'hamza.f@havenzaproperties.com',
-      phone: '+92 345 5123987',
-      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=85',
-      bio: 'Focused on rapid-turnaround luxury acquisitions, smart-home architecture, and family estates across Lahore, Rawalpindi, and Faisalabad.'
+      id: 'col-commercial',
+      title: 'Trophy Commercial Assets',
+      tagline: 'Grade-A Towers & Corporate Plazas',
+      category: 'Commercial',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85',
+      badge: 'Blue Area & Main Boulevards',
+      description: 'High-yielding commercial floorplates and retail flagships occupied by multinational covenants delivering superior long-term yields.',
+      specs: ['9.8%+ Net Rental Yields', 'Corporate Lease Covenants', 'Triple-Verified Title Deeds'],
+      filterTarget: 'Commercial'
     }
   ],
 
   // Client Testimonials
-  testimonials: [
-    {
-      id: 't-1',
-      name: 'Malik Tariq Aziz',
-      role: 'Chairman, Aziz Group of Industries',
-      location: 'Lahore / Dubai',
-      rating: 5,
-      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=85',
-      quote: 'Acquiring our 1-Kanal villa in DHA Raya through Tayba Sharif and the Havenza team was an exceptional experience. Their discretion, title verification diligence, and direct closing process set an entirely new benchmark for Pakistani real estate.'
-    },
-    {
-      id: 't-2',
-      name: 'Dr. Ayesha & Omar Siddiqui',
-      role: 'Overseas Investors & Consultants',
-      location: 'London, United Kingdom',
-      rating: 5,
-      photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=85',
-      quote: 'As overseas Pakistanis residing in Mayfair, purchasing property in Islamabad always felt fraught with uncertainty. Havenza provided video walkthroughs, transparent legal escrow, and secured our Margalla penthouse seamlessly. Truly world-class.'
-    },
-    {
-      id: 't-3',
-      name: 'Kamran & Sarah Bilgrami',
-      role: 'Managing Director, Bilgrami Logistics',
-      location: 'Karachi',
-      rating: 5,
-      photo: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=85',
-      quote: 'Havenza Properties handled both the sale of our Clifton residence and the acquisition of our oceanfront home. Every detail—from architectural staging to negotiations—was executed with finesse and integrity.'
-    }
-  ],
+  testimonials: [],
 
   // Frequently Asked Questions
   faqs: [
