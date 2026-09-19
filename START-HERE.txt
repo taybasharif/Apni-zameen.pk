@@ -1,9 +1,9 @@
-HAVENZA PROPERTIES — Luxury Real Estate Advisory
+ApniZameen.pk — Luxury Real Estate Advisory
 ========================================================================
 
 1. SECRET ADMIN PANEL ACCESS (LOGO 3-CLICK TRIGGER):
    • The brand logo (both in the header and footer) is interactive.
-   • Click the HAVENZA PROPERTIES brand logo 3 times consecutively (triple-click).
+   • Click the ApniZameen.pk brand logo 3 times consecutively (triple-click).
    • The Admin Panel (admin.html) will open immediately.
    • You can also open "admin.html" directly in your browser.
    • The Admin Panel features:
@@ -24,7 +24,7 @@ HAVENZA PROPERTIES — Luxury Real Estate Advisory
      - Grand Villa Sanctuaries (1 to 4 Kanal Architect-Designed Manors)
      - Turnkey Designer Residences (Curated Bespoke Metropolitan Homes)
      - Trophy Commercial Flagships (Grade-A High-Yield Corporate Assets)
-     - The 4 Havenza Architectural Standards (Triple-Tier Title Escrow, Energy Autonomy, Structural Mastery, Capital Preservation)
+     - The 4 ApniZameen.pk Architectural Standards (Triple-Tier Title Escrow, Energy Autonomy, Structural Mastery, Capital Preservation)
    • Each collection includes direct filtering to view related luxury listings.
 
 3. STRICT PRIVACY & CONTACT POLICY:

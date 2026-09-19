@@ -1,5 +1,5 @@
 /**
- * HAVENZA PROPERTIES — Interactive Application Engine
+ * ApniZameen.pk — Interactive Application Engine
  * Handles live filtering, property modals, favorites, viewing scheduler,
  * mortgage calculator, animations, and toast notifications.
  */
@@ -338,24 +338,28 @@
       onlyFavorites: false
     };
 
-    // Reset inputs
-    const kwInput = document.getElementById('filterKeyword');
-    if (kwInput) kwInput.value = '';
-    const citySel = document.getElementById('filterCity');
-    if (citySel) citySel.value = 'all';
-    const bedSel = document.getElementById('filterBeds');
-    if (bedSel) bedSel.value = 'all';
-    const sortSel = document.getElementById('filterSort');
-    if (sortSel) sortSel.value = 'default';
+    
+  // Reset inputs
+  const kwInput = document.getElementById('filterKeyword');
+  if (kwInput) kwInput.value = '';
+  const citySel = document.getElementById('filterCity');
+  if (citySel) citySel.value = 'all';
+  const bedSel = document.getElementById('filterBeds');
+  if (bedSel) bedSel.value = 'all';
+  const priceSel = document.getElementById('filterPrice');
+  if (priceSel) priceSel.value = 'all';
+  const sortSel = document.getElementById('filterSort');
+  if (sortSel) sortSel.value = 'default';
 
-    // Reset active pill
-    document.querySelectorAll('.filter-pill').forEach(p => {
-      p.classList.toggle('active', p.dataset.val === 'all');
-    });
+  // Reset active pill
+  document.querySelectorAll('.filter-pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.val === 'all' || p.dataset.filter === 'all');
+  });
 
-    renderProperties();
-    showToast('Filters reset to all luxury properties', 'fa-rotate-left');
-  }
+  renderProperties();
+  showToast('Filters reset to all luxury properties', 'fa-rotate-left');
+}
+    
 
   // Hero Search Console Submit
   function submitHeroSearch() {
@@ -848,7 +852,7 @@
           console.warn('Storage save error:', err);
         }
 
-        showToast('Thank you for contacting Havenza Properties. We will reply promptly to your email!', 'fa-paper-plane');
+        showToast('Thank you for contacting ApniZameen.pk. We will reply promptly to your email!', 'fa-paper-plane');
         contactForm.reset();
       });
     }

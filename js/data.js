@@ -1,5 +1,5 @@
 /**
- * HAVENZA PROPERTIES — Data Store
+ * ApniZameen.pk — Data Store
  * Comprehensive dataset for luxury properties, elite advisors, services, and testimonials.
  */
 
@@ -559,7 +559,7 @@ const HAVENZA_DATA = {
       id: 'srv-3',
       icon: 'fa-gem',
       title: 'Private Estates & Penthouses',
-      subtitle: 'The Havenza Signature Collection',
+      subtitle: 'The ApniZameen.pk Signature Collection',
       description: 'Exclusive marketing and acquisition of trophy assets that rarely appear on open portals. We provide discrete introductions between discerning investors and property owners.'
     },
     {
@@ -640,12 +640,12 @@ const HAVENZA_DATA = {
   faqs: [
     {
       id: 'faq-1',
-      question: 'How does Havenza Properties verify property titles and documentation?',
-      answer: 'Every property listed on Havenza undergoes rigorous three-tier legal verification. Our legal council examines official land records, DHA / CDA / KDA transfer allocations, approved building bylaws, encumbrance certificates, and tax clearance slips. You receive a verified title dossier before making any token payment.'
+      question: 'How does ApniZameen.pk verify property titles and documentation?',
+      answer: 'Every property listed on ApniZameen.pk undergoes rigorous three-tier legal verification. Our legal council examines official land records, DHA / CDA / KDA transfer allocations, approved building bylaws, encumbrance certificates, and tax clearance slips. You receive a verified title dossier before making any token payment.'
     },
     {
       id: 'faq-2',
-      question: 'Can overseas Pakistanis purchase property remotely through Havenza?',
+      question: 'Can overseas Pakistanis purchase property remotely through ApniZameen.pk?',
       answer: 'Yes, over 40% of our luxury transactions are completed by overseas clients based in the UK, USA, UAE, and Canada. We facilitate power of attorney (POA) attestations via Pakistani embassies, secure direct bank wire transfers, and provide 4K live video inspections with drone property surveys.'
     },
     {
@@ -655,12 +655,12 @@ const HAVENZA_DATA = {
     },
     {
       id: 'faq-4',
-      question: 'What fees or commissions are associated with Havenza services?',
+      question: 'What fees or commissions are associated with ApniZameen.pk services?',
       answer: 'We believe in complete transparency. Our residential sales brokerage is standard 1% to 2% depending on property class and marketing scope, agreed upfront with zero hidden charges. For rental properties, the standard fee is equivalent to one month’s rent.'
     },
     {
       id: 'faq-5',
-      question: 'How do I list my luxury property with Havenza Properties?',
+      question: 'How do I list my luxury property with ApniZameen.pk?',
       answer: 'Submit your property details via our Sell Your Property section or contact Tayba Sharif directly. Our valuation team will visit within 24 hours to conduct a comparative market analysis (CMA), assess staging needs, and propose an exclusive marketing strategy.'
     },
     {
