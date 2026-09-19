@@ -1,9 +1,9 @@
 # Robots.txt for ApniZameen.pk
-# https://havenza-properties.vercel.app/
+# https://apni-zameen-pk.vercel.app/
 
 User-agent: *
 Allow: /
 Disallow: /admin.html
 
 # Sitemap location
-Sitemap: https://havenza-properties.vercel.app/sitemap.xml
+Sitemap: https://apni-zameen-pk.vercel.app/sitemap.xml
