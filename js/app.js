@@ -9,7 +9,7 @@
 
   // Application State
   const state = {
-    currency: 'PKR', // 'PKR' or 'USD'
+    currency: 'PKR', // 'PKR' 
     favorites: new Set(),
     activeFilter: {
       purpose: 'all',     // 'all', 'buy', 'rent'
@@ -110,7 +110,7 @@
   // Render Single Property Card
   function createCardHTML(property) {
     const isFav = state.favorites.has(property.id);
-    const priceText = state.currency === 'USD' ? property.priceDisplayUSD : property.priceDisplayPKR;
+    const priceText = property.priceDisplayPKR;
     const purposeText = property.purpose === 'buy' ? 'For Sale' : 'For Rent';
 
     const bedroomsHTML = property.bedrooms > 0 
@@ -444,7 +444,7 @@
     if (title) title.textContent = property.title;
     if (location) location.innerHTML = `<i class="fa-solid fa-location-dot" style="color: var(--color-gold);"></i> ${property.address}`;
     if (pricePKR) pricePKR.textContent = property.priceDisplayPKR;
-    if (priceUSD) priceUSD.textContent = property.priceDisplayUSD;
+    if (priceUSD) priceUSD.textContent = property.priceDisplayPKR;
     if (beds) beds.textContent = property.bedrooms || 'Commercial';
     if (baths) baths.textContent = property.bathrooms || 'Full Baths';
     if (area) area.textContent = property.areaDisplay;
@@ -546,7 +546,7 @@
     viewingSelect.innerHTML = `
       <option value="">Select a Property for Private Tour...</option>
       ${HAVENZA_DATA.properties.map(p => `
-        <option value="${p.id}">${p.title} (${p.city} • ${state.currency === 'USD' ? p.priceDisplayUSD : p.priceDisplayPKR})</option>
+        <option value="${p.id}">${p.title} (${p.city} • ${state.currency === 'USD' ? p.priceDisplayPKR : p.priceDisplayPKR})</option>
       `).join('')}
     `;
   }
